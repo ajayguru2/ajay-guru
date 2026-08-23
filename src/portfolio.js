@@ -2,13 +2,12 @@
 
 // To change portfolio colors globally go to the  _globalColor.scss file
 
-import emoji from "react-easy-emoji";
-
-// Summary And Greeting Section
-
-const illustration = {
-  animated: true // Set to false to use static SVG
-};
+const emoji = value => value;
+import iiitvLogo from "./assets/images/iiitvLogo.png";
+import inuasc from "./assets/images/inuasc.jpeg";
+import jsdk from "./assets/images/jsdk.png";
+import saadxas from "./assets/images/sadxas.png";
+import vibrantLogo from "./assets/images/vaca-removebg-preview.png";
 
 const greeting = {
   username: "Ajay Guru",
@@ -112,7 +111,7 @@ const educationInfo = {
   schools: [
     {
       schoolName: "Indian Institute of Information Technology, Vadodara",
-      logo: require("./assets/images/iiitvLogo.png"),
+      logo: iiitvLogo,
       subHeader: "Bachelor of Technology in Computer Science",
       duration: "July 2016 - July 2020",
       desc: "",
@@ -120,7 +119,7 @@ const educationInfo = {
     },
     {
       schoolName: "Vibrant Academy",
-      logo: require("./assets/images/vaca-removebg-preview.png"),
+      logo: vibrantLogo,
       subHeader: "JEE Prep",
       duration: "April 2013 - July 2016",
       desc: "",
@@ -167,7 +166,7 @@ const workExperiences = {
     {
       role: "Software Engineer",
       company: "Nymble",
-      companylogo: require("./assets/images/jsdk.png"),
+      companylogo: jsdk,
       date: "Dec 2021 – Present",
       descBullets: [
         "In charge of HLD and LLD of the machine interaction logic",
@@ -177,7 +176,7 @@ const workExperiences = {
     {
       role: "Software Craftsperson",
       company: "Incubyte",
-      companylogo: require("./assets/images/inuasc.jpeg"),
+      companylogo: inuasc,
       date: "Oct 2020 – Dec 2021",
       descBullets: [
         "Practicing TDD, I contributed as a fullstack developer for Republic Finance LLC.",
@@ -187,7 +186,7 @@ const workExperiences = {
     {
       role: "Research Intern",
       company: "Siemens",
-      companylogo: require("./assets/images/sadxas.png"),
+      companylogo: saadxas,
       date: "Jan 2020 – Aug 2020",
       descBullets: [
         "Worked on developing an RL based ASHRAE compliant home automation solution to save energy while maintaining comfort. This project was then posed as a challenge at Siemens Global Hackathon 2020.",
@@ -205,104 +204,12 @@ const openSource = {
   display: true // Set false to hide this section, defaults to true
 };
 
-// Some big projects you have worked on
-
-const bigProjects = {
-  title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
-  projects: [
-    {
-      image: require("./assets/images/saayaHealthLogo.webp"),
-      projectName: "Saayahealth",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "http://saayahealth.com/"
-        }
-        //  you can add extra buttons here.
-      ]
-    },
-    {
-      image: require("./assets/images/nextuLogo.webp"),
-      projectName: "Nextu",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "http://nextu.se/"
-        }
-      ]
-    }
-  ],
-  display: false // Set false to hide this section, defaults to true
-};
-
-// Achievement Section
-// Include certificates, talks etc
-
-const achievementSection = {
-  title: emoji("Achievements And Certifications 🏆 "),
-  subtitle:
-    "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
-
-  achievementsCards: [
-    {
-      title: "Google Code-In Finalist",
-      subtitle:
-        "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-      image: require("./assets/images/codeInLogo.webp"),
-      footerLink: [
-        {
-          name: "Certification",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dYkVvNjdNWjNybWJrbndFSHpNY2NFV1p4YmU0/view?usp=sharing"
-        },
-        {
-          name: "Award Letter",
-          url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-        },
-        {
-          name: "Google Code-in Blog",
-          url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
-        }
-      ]
-    },
-    {
-      title: "Google Assistant Action",
-      subtitle:
-        "Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.",
-      image: require("./assets/images/googleAssistantLogo.webp"),
-      footerLink: [
-        {
-          name: "View Google Assistant Action",
-          url: "https://assistant.google.com/services/a/uid/000000100ee688ee?hl=en"
-        }
-      ]
-    },
-
-    {
-      title: "PWA Web App Developer",
-      subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-      image: require("./assets/images/pwaLogo.webp"),
-      footerLink: [
-        { name: "Certification", url: "" },
-        {
-          name: "Final Project",
-          url: "https://pakistan-olx-1.firebaseapp.com/"
-        }
-      ]
-    }
-  ],
-  display: false // Set false to hide this section, defaults to true
-};
-
 // Blogs Section
 
 const blogSection = {
   title: "Blogs",
   subtitle:
     "I have strong opinions which I pen frivolously",
-  displayMediumBlogs: "true", // Set true to display fetched medium blogs instead of hardcoded ones
   blogs: [
     {
       url: "https://medium.com/@ajayguru/project-based-learning-8cd0baecbe8d",
@@ -339,20 +246,6 @@ const talkSection = {
   display: true // Set false to hide this section, defaults to true
 };
 
-// Podcast Section
-
-const podcastSection = {
-  title: emoji("Podcasts 🎙️"),
-  subtitle: "Here are some of the podcasts I think everyone should listen to atleast once",
-
-  // Please Provide with Your Podcast embeded Link
-  podcast: [
-    "https://www.listennotes.com/podcasts/the-wan-show-linus-tech-tips-f7H8kwE0Qge/",
-    "https://lnns.co/WmQiGoJjgNT"
-  ],
-  display: false // Set false to hide this section, defaults to true
-};
-
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
@@ -369,7 +262,6 @@ const twitterDetails = {
 };
 
 export {
-  illustration,
   greeting,
   socialMediaLinks,
   skillsSection,
@@ -377,11 +269,8 @@ export {
   techStack,
   workExperiences,
   openSource,
-  bigProjects,
-  achievementSection,
   blogSection,
   talkSection,
-  podcastSection,
   contactInfo,
   twitterDetails
 };

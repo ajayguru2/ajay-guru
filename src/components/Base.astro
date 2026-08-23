@@ -1,0 +1,100 @@
+---
+import { Font } from "astro:assets";
+import "../styles/site.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  section?: "work" | "thoughts" | "about";
+}
+
+const site = "Ajay Guru";
+const { title, description = "Ajay Guru builds the parts of software that must agree with something outside themselves. Work, thoughts and flowcharts.", section } = Astro.props;
+const pageTitle = title ? `${title} — ${site}` : site;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const isHome = Astro.url.pathname === "/";
+const nav = [
+  ["work", "Work", "/work/"],
+  ["thoughts", "Thoughts", "/thoughts/"],
+  ["about", "About", "/about/"]
+] as const;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch {}
+    </script>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f1e7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15130f" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@AjayGuru0" />
+    <link rel="me" href="https://github.com/ajayguru2" />
+    <link rel="me" href="https://www.linkedin.com/in/ajayguru21/" />
+    <link rel="me" href="https://x.com/AjayGuru0" />
+    <link rel="alternate" type="application/rss+xml" title="Ajay Guru — Thoughts" href="/rss.xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Font cssVariable="--font-mono" preload />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wrap">
+      <header class="masthead">
+        {isHome ? <h1 class="name">{site}</h1> : <a class="name" href="/">{site}</a>}
+        <nav aria-label="Site">
+          {nav.map(([key, label, href]) => (
+            <a href={href} aria-current={section === key ? "page" : undefined}>{label}</a>
+          ))}
+          <button id="theme" type="button" hidden aria-label="Switch colour theme">Theme</button>
+        </nav>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <slot />
+      </main>
+
+      <footer class="site">
+        <nav aria-label="Elsewhere">
+          <a href="https://github.com/ajayguru2" rel="me">GitHub</a>
+          <a href="https://www.linkedin.com/in/ajayguru21/" rel="me">LinkedIn</a>
+          <a href="https://x.com/AjayGuru0" rel="me">X</a>
+          <a href="mailto:hi@ajay.guru">hi@ajay.guru</a>
+          <a href="/rss.xml">RSS</a>
+        </nav>
+        <p class="colophon">Set in IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. The only JavaScript is the theme switch. © Ajay Guru.</p>
+      </footer>
+    </div>
+    <script is:inline>
+      // The site's only JavaScript: the theme switch. Label names the theme you would switch to.
+      const btn = document.getElementById("theme"), root = document.documentElement;
+      const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+      const label = () => { btn.textContent = isDark() ? "Light" : "Dark"; };
+      btn.addEventListener("click", () => {
+        const next = isDark() ? "light" : "dark";
+        root.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch {}
+        label();
+      });
+      matchMedia("(prefers-color-scheme: dark)").addEventListener("change", label);
+      btn.hidden = false;
+      label();
+    </script>
+  </body>
+</html>

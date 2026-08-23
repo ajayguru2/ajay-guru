@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Home", "x": 0, "y": 0, "w": 1280, "h": 1560 },
+    { "file": "Work.dc.html", "title": "Work", "x": 1360, "y": 0, "w": 1280, "h": 2380 },
+    { "file": "About.dc.html", "title": "About", "x": 2720, "y": 0, "w": 1280, "h": 1720 },
+    { "file": "Thoughts.dc.html", "title": "Thoughts index", "x": 0, "y": 2620, "w": 1280, "h": 1180 },
+    { "file": "Thought.dc.html", "title": "Thought page", "x": 1360, "y": 2620, "w": 1280, "h": 2040 },
+    { "file": "HomeMobile.dc.html", "title": "Home · mobile", "x": 2720, "y": 2620, "w": 390, "h": 1900 },
+    { "file": "Spec.dc.html", "title": "Spec board", "x": 3190, "y": 2620, "w": 1280, "h": 2240 }
+  ],
+  "annotations": [
+    { "id": "brief", "x": -640, "y": 0, "w": 520, "text": "ajay.guru redesign — Editorial direction.\nEach page artboard has a Dark tweak (top of the frame) to preview the OS dark scheme.\nText in accent red marked [TODO] is a fact only you know; everything else is drafted from your gists, GitHub and the old site.\nThe last two thought titles on the lists are candidate notes lifted from your ai-workflow gist, not written yet." }
+  ],
+  "launch": { "view": "canvas" }
+}

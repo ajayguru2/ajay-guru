@@ -1,0 +1,28 @@
+---
+import Base from "../components/Base.astro";
+---
+
+<Base title="About" section="about" description="Who Ajay Guru is, what he is doing now, and how he works.">
+  <header class="page-title">
+    <h1>About</h1>
+  </header>
+
+  <div class="prose" style="margin-top: 2.5rem;">
+    <p>I’m Ajay. I live in <span class="todo">[TODO: city]</span>, India, and I have written software for a living since 2020 and for the fun of it since well before that. <span class="todo">[TODO: one line about you away from a keyboard — the thing a colleague would mention first.]</span></p>
+
+    <h2>Now <span class="mono" style="margin-left: 0.5rem; font-weight: 400;">August 2026</span></h2>
+    <p>A builder at Regie.ai, on the systems that move data between customers’ CRMs and their outreach. Most of my day is design and review: drawing the system, writing the plan, and reading what my AI pair writes against it.</p>
+
+    <h2>How I work</h2>
+    <p><em>Design first.</em> I draw the system before I write it — boundaries, data flow, what can fail — and put the drawing in front of someone before code exists. Most of the drawings on this site started that way.</p>
+    <p><em>Test first.</em> The test describes the behaviour; then the smallest code that passes; then clean up. Fourteen months at Incubyte made this a reflex rather than a preference.</p>
+    <p><em>With an AI pair.</em> Context, then an explicit plan, then review of the plan, then code, then review again, then commit. I spend my attention on the plan; the diff is where the plan shows. I wrote the loop up in <a href="/thoughts/review-the-plan-not-the-diff/">Review the plan, not the diff</a>.</p>
+
+    <h2>On the side</h2>
+    <p><a href="https://github.com/ajayguru2/tmux-logger">tmux-logger</a>, a small tool in Rust; <a href="https://github.com/ajayguru2/slow.com">slow.com</a>, a Raycast extension that is obviously not as good as fast.com; <a href="https://github.com/ajayguru2/reflect">reflect</a>, a habit tracker with an AI coach; <a href="https://github.com/ajayguru2/claude-notebook">claude-notebook</a>. Earlier: a deep-learning nanodegree, a talk on concurrency in Go, too many tic-tac-toes.</p>
+
+    <h2>Toolbox</h2>
+    <p class="mono" style="font-size: 0.9375rem; color: var(--ink); line-height: 1.7;">Java · Go · TypeScript · Vue · Python · Rust · Postgres · AWS <span class="todo">[TODO: confirm, reorder by how much you’d defend each]</span></p>
+    <p style="color: var(--muted); font-size: 0.95em;">B.Tech in Computer Science, IIIT Vadodara, 2016 – 2020.</p>
+  </div>
+</Base>

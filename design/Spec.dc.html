@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .page, .light { --paper:#f6f1e7; --paper-2:#ede6d8; --ink:#1a1613; --muted:#6b635a; --accent:#7a2e2a; --rule:#d6cdbd;
+            --code-kw:#7a2e2a; --code-fn:#2b4c7e; --code-str:#3b6d3a; --code-cm:#8a8178;
+            --serif:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+            font-family: var(--serif); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .dark { --paper:#15130f; --paper-2:#1f1b17; --ink:#e6e0d4; --muted:#a39a8c; --accent:#d9907f; --rule:#332d26;
+            --code-kw:#d9907f; --code-fn:#9db7e0; --code-str:#a3c69a; --code-cm:#7d756a; background: var(--paper); color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .h { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; margin: 0 0 20px 0; }
+    .k { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .sw { display: flex; align-items: center; gap: 14px; }
+    .sw i { display: block; width: 44px; height: 28px; border: 1px solid var(--rule); border-radius: 2px; }
+    .prose-link { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+    .focus { outline: 2px solid currentColor; outline-offset: 3px; }
+    pre { margin: 0; font-family: var(--mono); font-size: 14.5px; line-height: 1.6; color: var(--ink); white-space: pre; }
+    .kw { color: var(--code-kw); } .fn { color: var(--code-fn); } .st { color: var(--code-str); } .cm { color: var(--code-cm); font-style: italic; }
+    table { border-collapse: collapse; width: 100%; font-size: 16px; line-height: 1.45; }
+    th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--muted); padding: 0 16px 8px 0; border-bottom: 1px solid var(--ink); }
+    td { padding: 10px 16px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  </style>
+</helmet>
+<div class="page" style="width: 1280px; min-height: 2240px; box-sizing: border-box; padding: 48px 64px 64px 64px; display: flex; flex-direction: column; gap: 56px;">
+
+  <header style="display: flex; justify-content: space-between; align-items: baseline;">
+    <h1 style="margin: 0; font-size: 30px; font-weight: 500; font-variation-settings: 'opsz' 36;">ajay.guru — spec</h1>
+    <span class="k">Editorial · Newsreader + IBM Plex Mono · light &amp; dark by OS · no JS</span>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px;">
+
+    <!-- TYPE -->
+    <section style="display: flex; flex-direction: column; gap: 22px;">
+      <p class="h">Type scale</p>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-size: 40px; line-height: 1.15; font-weight: 500; letter-spacing: -0.015em; font-variation-settings: 'opsz' 36;">Page title</span><span class="k">Newsreader 36pt 500 · 40/46</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-size: 31px; line-height: 1.32; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Home statement</span><span class="k">36pt 400 · 31/41</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Work entry h2</span><span class="k">36pt 500 · 30/36</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24;">List title / h2 in prose</span><span class="k">24pt 500 · 24/30</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-size: 19px; line-height: 1.55;">Body prose, and <em>italic for emphasis</em>, with <strong style="font-weight: 600;">strong at 600</strong>.</span></div>
+        <div><span class="k">16pt 400 · clamp(17px, 1rem + .35vw, 19px) / 1.55 · measure 680px ≈ 72 characters</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-family: var(--mono); font-size: 13px; color: var(--muted);">Written March 2026 · tended August 2026</span><span class="k">Plex Mono 13 muted — metadata, nav, bylines</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Section label</span><span class="k">Plex Mono 12 caps +0.12em</span></div>
+        <div style="display: flex; align-items: baseline; gap: 20px;"><span style="font-family: var(--mono); font-size: 14.5px;">code and diagram labels</span><span class="k">Plex Mono 14.5 / 1.6 · diagrams 13</span></div>
+      </div>
+      <p class="k" style="margin: 8px 0 0 0; line-height: 1.6;">Production ships static cuts: Newsreader 16pt 400/400i/600 + 36pt 500, Plex Mono 400/500 (≈115 KB woff2, self-hosted); this mockup emulates them with the variable font. Fallbacks: Georgia / Menlo, metric-matched.</p>
+    </section>
+
+    <!-- COLOR -->
+    <section style="display: flex; flex-direction: column; gap: 22px;">
+      <p class="h">Color tokens · contrast on paper</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+        <div class="light" style="padding: 20px; border: 1px solid var(--rule); border-radius: 2px; display: flex; flex-direction: column; gap: 12px;">
+          <span class="k">light</span>
+          <div class="sw"><i style="background: #f6f1e7;"></i><span class="k">--paper #f6f1e7</span></div>
+          <div class="sw"><i style="background: #ede6d8;"></i><span class="k">--paper-2 #ede6d8</span></div>
+          <div class="sw"><i style="background: #1a1613;"></i><span class="k">--ink #1a1613 · 16.0</span></div>
+          <div class="sw"><i style="background: #6b635a;"></i><span class="k">--muted #6b635a · 5.2</span></div>
+          <div class="sw"><i style="background: #7a2e2a;"></i><span class="k">--accent #7a2e2a · 8.3</span></div>
+          <div class="sw"><i style="background: #d6cdbd;"></i><span class="k">--rule #d6cdbd</span></div>
+        </div>
+        <div class="dark" style="padding: 20px; border: 1px solid var(--rule); border-radius: 2px; display: flex; flex-direction: column; gap: 12px;">
+          <span class="k">dark</span>
+          <div class="sw"><i style="background: #15130f;"></i><span class="k">--paper #15130f</span></div>
+          <div class="sw"><i style="background: #1f1b17;"></i><span class="k">--paper-2 #1f1b17</span></div>
+          <div class="sw"><i style="background: #e6e0d4;"></i><span class="k">--ink #e6e0d4 · 14.1</span></div>
+          <div class="sw"><i style="background: #a39a8c;"></i><span class="k">--muted #a39a8c · 6.7</span></div>
+          <div class="sw"><i style="background: #d9907f;"></i><span class="k">--accent #d9907f · 7.3</span></div>
+          <div class="sw"><i style="background: #332d26;"></i><span class="k">--rule #332d26</span></div>
+        </div>
+      </div>
+      <p class="k" style="margin: 0; line-height: 1.6;">Accent is used only for prose underlines, hover, footnote marks and TODO markers. Scheme follows the OS; no toggle. D2 diagrams take the same six tokens via a shared theme file.</p>
+
+      <p class="h" style="margin-top: 12px;">Link states</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+        <div class="light" style="padding: 20px; border: 1px solid var(--rule); border-radius: 2px; display: flex; flex-direction: column; gap: 14px; font-size: 19px;">
+          <span>Prose <a href="#" class="prose-link">default link</a></span>
+          <span>Prose <a href="#" class="prose-link" style="color: var(--accent);">hover</a></span>
+          <span>Prose <a href="#" class="prose-link focus">focus-visible</a></span>
+          <span class="k">nav / footer: <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">plain muted</a> · <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--ink);">current</a></span>
+          <span class="k">no visited colour</span>
+        </div>
+        <div class="dark" style="padding: 20px; border: 1px solid var(--rule); border-radius: 2px; display: flex; flex-direction: column; gap: 14px; font-size: 19px;">
+          <span>Prose <a href="#" class="prose-link">default link</a></span>
+          <span>Prose <a href="#" class="prose-link" style="color: var(--accent);">hover</a></span>
+          <span>Prose <a href="#" class="prose-link focus">focus-visible</a></span>
+          <span class="k">nav / footer: <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">plain muted</a> · <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--ink);">current</a></span>
+          <span class="k">no visited colour</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE -->
+    <section style="display: flex; flex-direction: column; gap: 22px;">
+      <p class="h">Code block · Shiki min-light / min-dark recoloured to tokens</p>
+      <div class="light" style="background: var(--paper-2); padding: 20px 24px; border-radius: 2px; overflow: hidden;"><pre><span style="display:block;"><span class="cm">// one source of truth</span></span><span style="display:block;"><span class="kw">export function</span> <span class="fn">isSoqlSource</span>(config: ListSourceConfig): <span class="kw">boolean</span> {</span><span style="display:block;">&nbsp;&nbsp;<span class="kw">return</span> !!config.soql;</span><span style="display:block;">}</span></pre></div>
+      <div class="dark" style="background: var(--paper-2); padding: 20px 24px; border-radius: 2px; overflow: hidden;"><pre><span style="display:block;"><span class="cm">// one source of truth</span></span><span style="display:block;"><span class="kw">export function</span> <span class="fn">isSoqlSource</span>(config: ListSourceConfig): <span class="kw">boolean</span> {</span><span style="display:block;">&nbsp;&nbsp;<span class="kw">return</span> !!config.soql;</span><span style="display:block;">}</span></pre></div>
+      <p class="k" style="margin: 0; line-height: 1.6;">Inline <code style="font-family: var(--mono); font-size: 0.9em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px;">code</code> sits on paper-2. Blocks scroll horizontally on narrow screens; tables too.</p>
+
+      <p class="h" style="margin-top: 12px;">Table</p>
+      <table>
+        <thead><tr><th>Mistake caught</th><th>Rule added</th></tr></thead>
+        <tbody>
+          <tr><td>String literals for enums</td><td>Always use enum values</td></tr>
+          <tr><td>Missing workspace filter</td><td>Always scope by workspace</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FIGURE / META / 404 / ICONS -->
+    <section style="display: flex; flex-direction: column; gap: 22px;">
+      <p class="h">Figure · D2 diagram rules</p>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px; border: 1px dashed var(--rule); border-radius: 2px;">
+        <svg viewBox="0 0 360 64" width="360" height="64" role="img" aria-label="Two boxes joined by an arrow">
+          <rect x="10" y="12" width="140" height="40" rx="2" style="fill: var(--paper-2); stroke: var(--ink); stroke-width: 1;"></rect>
+          <text x="80" y="37" text-anchor="middle" style="font-family: var(--mono); font-size: 13px; fill: var(--ink);">Salesforce</text>
+          <path d="M 150 32 L 205 32" style="fill: none; stroke: var(--ink); stroke-width: 1;"></path>
+          <path d="M 198 27 L 206 32 L 198 37" style="fill: none; stroke: var(--ink); stroke-width: 1.2;"></path>
+          <rect x="210" y="12" width="140" height="40" rx="2" style="fill: var(--paper-2); stroke: var(--ink); stroke-width: 1;"></rect>
+          <text x="280" y="37" text-anchor="middle" style="font-family: var(--mono); font-size: 13px; fill: var(--ink);">Sequence</text>
+        </svg>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); text-align: center;">Caption in Plex Mono 13, muted, centred.</span>
+      </div>
+      <p class="k" style="margin: 0; line-height: 1.7;">Transparent background · 1px ink strokes · paper-2 fills · Plex Mono 13 labels, no bold · ELK layout · ≤ 680px wide (the column), prefer direction: down · every fence has title="…" (alt text) · may break out to 860px.</p>
+
+      <p class="h" style="margin-top: 12px;">Metadata line · 404</p>
+      <p style="margin: 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Written March 2026 · tended August 2026</p>
+      <p style="margin: 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Regie.ai · 2024 – now</p>
+      <p style="margin: 8px 0 0 0; font-size: 19px; line-height: 1.55;">Nothing lives at this address. <a href="#" class="prose-link">Go home</a>.</p>
+
+      <p class="h" style="margin-top: 12px;">Favicon · OG image</p>
+      <div style="display: flex; align-items: flex-start; gap: 28px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <div style="display: flex; gap: 10px;">
+            <div class="light" style="width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule);"><span style="font-size: 22px; font-weight: 600; line-height: 1; font-variation-settings: 'opsz' 36;">A</span></div>
+            <div class="dark" style="width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule);"><span style="font-size: 22px; font-weight: 600; line-height: 1; font-variation-settings: 'opsz' 36;">A</span></div>
+          </div>
+          <span class="k">svg + 32px ico</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="light" style="width: 420px; height: 220px; border: 1px solid var(--rule); border-radius: 2px; box-sizing: border-box; padding: 28px 32px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 34px; font-weight: 500; line-height: 1.1; font-variation-settings: 'opsz' 36;">Ajay Guru</div>
+              <div style="margin-top: 14px; font-size: 16px; line-height: 1.4; color: var(--muted); max-width: 320px;">I build the parts of software that must agree with something outside themselves.</div>
+            </div>
+            <div style="font-family: var(--mono); font-size: 12px; color: var(--muted);">ajay.guru</div>
+          </div>
+          <span class="k">og.png 1200×630, one static image for every page</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <section style="display: flex; flex-direction: column; gap: 14px;">
+    <p class="h">Spacing</p>
+    <p class="k" style="margin: 0; line-height: 1.8;">Column 680px centred · masthead → lead 120px (home) / 96px (pages) · between sections 104–128px · section label rule → first item 28–40px · list rows 14px padding (home) / 22px (index), 1px rule · footer 128px above, 20px inside · mobile: 20px gutters, vertical rhythm ≈ ×0.6.</p>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

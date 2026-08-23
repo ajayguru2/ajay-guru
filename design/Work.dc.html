@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .page { --paper:#f6f1e7; --paper-2:#ede6d8; --ink:#1a1613; --muted:#6b635a; --accent:#7a2e2a; --rule:#d6cdbd;
+            --serif:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+            font-family: var(--serif); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .page.dark { --paper:#15130f; --paper-2:#1f1b17; --ink:#e6e0d4; --muted:#a39a8c; --accent:#d9907f; --rule:#332d26; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .prose p { margin: 0 0 1.1em 0; font-size: 19px; line-height: 1.55; text-wrap: pretty; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+    .prose code { font-family: var(--mono); font-size: 0.86em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px; }
+    .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .nav a { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+    .nav a.current { color: var(--ink); }
+    .todo { color: var(--accent); }
+  </style>
+</helmet>
+<div class="page {{theme}}" style="width: 1280px; min-height: 2380px; box-sizing: border-box; padding: 48px 0 64px 0; display: flex; flex-direction: column; align-items: center;">
+
+  <header style="width: 680px; display: flex; justify-content: space-between; align-items: baseline;">
+    <a href="#" style="font-size: 22px; font-weight: 500; font-variation-settings: 'opsz' 36;">Ajay Guru</a>
+    <nav class="nav" style="display: flex; gap: 28px;">
+      <a href="#" class="current">Work</a>
+      <a href="#">Thoughts</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <section style="width: 680px; margin-top: 96px;">
+    <h1 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 500; letter-spacing: -0.015em; font-variation-settings: 'opsz' 36;">Work</h1>
+    <p style="margin: 20px 0 0 0; font-size: 19px; line-height: 1.55; color: var(--muted); text-wrap: pretty;">The systems I would point to if you asked what I actually did. Not a résumé — four things, and what was hard about each.</p>
+  </section>
+
+  <div style="width: 680px; margin-top: 72px; display: flex; flex-direction: column; gap: 88px;">
+
+    <article id="regie" class="prose" style="display: flex; flex-direction: column; gap: 0;">
+      <div style="border-top: 1px solid var(--rule); padding-top: 20px;">
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Polling a CRM into sales sequences</h2>
+        <p style="margin: 10px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.6;">Regie.ai · Software Engineer <span class="todo">[TODO: title]</span> · 2024 – now <span class="todo">[TODO: start]</span></p>
+      </div>
+      <div style="margin-top: 28px;">
+        <p>Regie’s customers keep their truth in Salesforce. They wanted new and changed contacts to land in outreach sequences without anyone exporting a list. The catch: every customer defines “the right contacts” differently, and the only language they all speak is SOQL.</p>
+        <p>I built inbound polling. An EventBridge schedule wakes a thin consumer every two minutes; it runs the customer’s own SOQL with a date filter injected, maps and validates what comes back against their CRM mapping, and enrolls the new prospects. A query is validated when it is written — structurally, and by executing it with <code>LIMIT 1</code> — so a bad query fails at creation, not at 3 a.m. on its first sync.</p>
+        <p>What was hard: extending the existing source types instead of inventing a new one (an existing <code>SfSource</code> already had the fields), filter semantics that stayed backwards-compatible (default to <code>LastModifiedDate</code>), and keeping workspace scoping airtight in a multi-tenant system.</p>
+        <p>Thirty-plus files across six modules, five pull requests, zero production incidents. Most of it written with an AI pair, following a loop I <a href="#">wrote up</a>.</p>
+      </div>
+      <p style="margin: 24px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">TypeScript · Node · AWS EventBridge · Salesforce SOQL · Postgres <span class="todo">[TODO: confirm]</span></p>
+    </article>
+
+    <article id="nymble" class="prose">
+      <div style="border-top: 1px solid var(--rule); padding-top: 20px;">
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Turning recipes into machine instructions</h2>
+        <p style="margin: 10px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.6;">Nymble · Software Engineer · Dec 2021 – 2023 <span class="todo">[TODO: end]</span></p>
+      </div>
+      <div style="margin-top: 28px;">
+        <p>Nymble builds a cooking robot. A recipe a human reads — add two tomatoes, sauté, then the spices — is not something a machine can run. Someone has to turn it into a sequence of dispenses and cook steps with quantities, timing and ordering the hardware can honour.</p>
+        <p>I owned the high- and low-level design of that layer: compiling composite recipes into macro, micro and liquid dispense instructions and cook instructions, and the instruction logs and test bench that checked what the machine actually did against what it was told.</p>
+        <p>What was hard: parallel dispenses that must not collide, the “no dispense” edge cases, and making a log legible enough to debug a physical machine from a JSON file. <span class="todo">[TODO: one line of outcome — machines in homes, recipes supported, anything you can say]</span></p>
+      </div>
+      <p style="margin: 24px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Java · Vue <span class="todo">[TODO: rest of stack]</span></p>
+    </article>
+
+    <article id="incubyte" class="prose">
+      <div style="border-top: 1px solid var(--rule); padding-top: 20px;">
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Shipping lending software test-first</h2>
+        <p style="margin: 10px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.6;">Incubyte · Software Craftsperson · Oct 2020 – Dec 2021</p>
+      </div>
+      <div style="margin-top: 28px;">
+        <p>Fourteen months inside a consultancy that takes craft literally. I worked full-stack for Republic Finance, a US consumer lender, on services in Micronaut and Go — everything test-driven, everything paired or reviewed, nothing merged that a colleague couldn’t read cold.</p>
+        <p>The lasting part wasn’t the stack. It was the habit: write the test that describes the behaviour, then the smallest code that passes, then clean up. I still work that way, with a human pair or an AI one.</p>
+      </div>
+      <p style="margin: 24px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Java (Micronaut) · Go (Gin) <span class="todo">[TODO: rest of stack]</span></p>
+    </article>
+
+    <article id="siemens" class="prose">
+      <div style="border-top: 1px solid var(--rule); padding-top: 20px;">
+        <h2 style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36;">Teaching a house to heat itself</h2>
+        <p style="margin: 10px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted); line-height: 1.6;">Siemens · Research Intern · Jan – Aug 2020</p>
+      </div>
+      <div style="margin-top: 28px;">
+        <p>Heating and cooling is a large share of a building’s energy. The brief: keep rooms inside ASHRAE comfort bounds while using less of it — with reinforcement learning rather than hand-tuned schedules.</p>
+        <p>I built the RL controller and the machinery around it: containerising the models, enabling remote execution, validating the existing ones. The problem was good enough that Siemens posed it as a challenge at its Global Hackathon 2020.</p>
+      </div>
+      <p style="margin: 24px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Python · Reinforcement learning · Docker</p>
+    </article>
+
+  </div>
+
+  <footer style="width: 680px; margin-top: 128px; display: flex; flex-direction: column; gap: 18px; border-top: 1px solid var(--rule); padding-top: 20px;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">GitHub</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">LinkedIn</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">X</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">hi@ajay.guru</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">RSS</a>
+    </nav>
+    <p style="margin: 0; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 560px;">Set in Newsreader and IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript. © 2026 Ajay Guru.</p>
+  </footer>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1280,"height":2380}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.dark ? 'dark' : '' };
+  }
+}
+</script>
+</body>
+</html>

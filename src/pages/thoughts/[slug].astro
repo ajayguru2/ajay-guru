@@ -1,0 +1,26 @@
+---
+import { render } from "astro:content";
+import Base from "../../components/Base.astro";
+import { thoughts } from "../../lib";
+
+export async function getStaticPaths() {
+  return (await thoughts()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const long = (d: Date) => d.toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+const { title, date, updated, summary } = entry.data;
+---
+
+<Base title={title} section="thoughts" description={summary}>
+  <article>
+    <header class="page-title article-head">
+      <h1>{title}</h1>
+      <p class="meta">Written {long(date)}{updated && ` · tended ${long(updated)}`}</p>
+    </header>
+    <div class="prose article-body">
+      <Content />
+    </div>
+  </article>
+</Base>

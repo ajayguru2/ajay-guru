@@ -1,0 +1,15 @@
+---
+import Base from "../../components/Base.astro";
+import ThoughtList from "../../components/ThoughtList.astro";
+import { thoughts } from "../../lib";
+
+const items = await thoughts();
+---
+
+<Base title="Thoughts" section="thoughts" description="Short notes Ajay Guru keeps tending. Newest change first. Not essays, not finished.">
+  <header class="page-title">
+    <h1>Thoughts</h1>
+    <p class="sub">Short notes I keep tending. Newest change first. Not essays, not finished.</p>
+  </header>
+  <ThoughtList items={items} full />
+</Base>

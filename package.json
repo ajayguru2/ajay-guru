@@ -7,13 +7,12 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "start": "node fetch.js && astro dev",
-    "build": "node fetch.js && astro build",
+    "start": "astro dev",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "devDependencies": {
     "astro": "^7.2.4",
-    "dotenv": "^8.2.0",
     "sass": "^1.97.3"
   }
 }

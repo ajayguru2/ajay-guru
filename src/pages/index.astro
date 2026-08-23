@@ -1,10 +1,10 @@
 ---
-import {readFile} from "node:fs/promises";
 import SocialLinks from "../components/SocialLinks.astro";
 import contactMail from "../assets/images/contactMailDark.svg";
 import developerActivity from "../assets/images/developerActivity.svg";
 import manOnTable from "../assets/images/manOnTable.svg";
 import skillImage from "../assets/images/skill.svg";
+import repositories from "../data/projects.json";
 import {
   blogSection,
   contactInfo,
@@ -45,14 +45,6 @@ import "../components/footer/Footer.scss";
 import "../containers/topbutton/Top.scss";
 
 const assetPath = asset => (typeof asset === "string" ? asset : asset.src);
-let repositories = [];
-
-try {
-  const profile = JSON.parse(await readFile("public/profile.json", "utf8"));
-  repositories = profile.data.user.pinnedItems.edges;
-} catch {
-  // Local development still works when GitHub data has not been fetched.
-}
 ---
 
 <!doctype html>
@@ -241,7 +233,7 @@ try {
           <section class="main" id="opensource">
             <h2 class="project-title">Open Source Projects</h2>
             <div class="repo-cards-div-main">
-              {repositories.map(({node: repo}) => (
+              {repositories.map(repo => (
                 <a class="repo-card-link" href={repo.url} target="_blank" rel="noopener noreferrer">
                   <article class="repo-card-div">
                     <div class="repo-name-div">

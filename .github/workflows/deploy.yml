@@ -24,10 +24,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-        env:
-          GITHUB_USERNAME: ${{ github.repository_owner }}
-          REACT_APP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USE_GITHUB_DATA: "true"
       - if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
       - if: github.event_name != 'pull_request'

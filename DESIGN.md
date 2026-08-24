@@ -10,10 +10,10 @@ The short version: **an engineer's notebook, typeset with care.** One monospace 
 
 1. **Prose over props.** No logos, skill bars, cards, icons, badges, stats, avatars or illustrations. If something is worth saying, say it in a sentence.
 2. **One column, one width.** Everything lives in a 680 px measure. Figures may not exceed it; nothing else may either.
-3. **Zero client JavaScript.** The only script on the site is the theme switch (≈12 lines). A feature that needs JS needs a very good reason and a line in the colophon.
+3. **Zero client JavaScript.** There is none — no scripts ship at all. A feature that needs JS needs a very good reason and a line in the colophon.
 4. **Deterministic, self-contained builds.** No network at build time beyond `npm ci` and the D2 install. No CDN fonts, no analytics, no embeds. Building twice yields byte-identical output.
 5. **Delete before adding.** Prefer removing an element to styling it. Every new thing must earn its rule in `site.css`.
-6. **Respect the reader's settings.** Colour scheme follows the OS unless the reader overrides it. Print works. Keyboard works. Reduced motion is moot because nothing moves.
+6. **Respect the reader's settings.** Colour scheme follows the OS. Print works. Keyboard works. Reduced motion is moot because nothing moves.
 
 ---
 
@@ -62,7 +62,7 @@ Six tokens, defined once with `light-dark()`; `color-scheme` picks the side.
 | Token | Light | Dark | Used for |
 |---|---|---|---|
 | `--paper` | `#f6f1e7` | `#15130f` | page background |
-| `--paper-2` | `#ede6d8` | `#1f1b17` | code, inline code, diagram shape fill, footnote `:target` highlight |
+| `--paper-2` | `#ede6d8` | `#1f1b17` | code, inline code, diagram shape fill, footnote `:target` highlight, skip-link focus |
 | `--ink` | `#1a1613` | `#e6e0d4` | text, rules in tables' head, diagram strokes, the targeted work entry's opening rule |
 | `--muted` | `#6b635a` | `#a39a8c` | metadata, nav, captions, footnotes, secondary prose |
 | `--accent` | `#7a2e2a` | `#d9907f` | prose underlines, hover, footnote marks, TODO markers — nothing else |
@@ -72,14 +72,14 @@ Contrast on paper: ink 16.0 / 14.1, muted 5.2 / 6.7, accent 8.3 / 7.3 (light / d
 
 Rules: no other colours in the stylesheet; no gradients, shadows, tints, borders thicker than 1 px, or rounded corners beyond 2 px. Shiki themes are `github-light` / `github-dark` with their backgrounds overridden to `--paper-2`, and the tokens that fall under the 4.5:1 floor on `--paper-2` remapped warm by a small transformer in `astro.config.mjs` (comments take `--muted`; keyword red and orange darken). Re-measure there if you change a theme or a paper token.
 
-**Scheme switching.** Default follows `prefers-color-scheme`. `<html data-theme="light|dark">` overrides it; the value is stored in `localStorage.theme`, applied by a 3-line inline script in `<head>` before first paint, toggled by the masthead button whose label names the theme you would switch *to*. There is no "auto" state in the UI; clearing site data restores it. Print forces light with pure black/white tokens.
+**Scheme switching.** There is no switch: the scheme follows `prefers-color-scheme`, full stop. `color-scheme` on `:root` picks the side of every `light-dark()` pair, and the dark diagram filter (§7) keys off the same media query. Print forces light with pure black/white tokens.
 
 ---
 
 ## 5. Layout and spacing
 
 - Column: `.wrap { width: min(42.5rem, 100% - 2.5rem); margin-inline: auto }` — 680 px, 20 px gutters on phones.
-- Masthead: name left, nav right (Work · Thoughts · About · theme button), baseline-aligned, `padding-top: clamp(1.5rem, 4vw, 3rem)`. The current section is `--ink`, others `--muted`.
+- Masthead: name left, nav right (Work · Thoughts · About), baseline-aligned, `padding-top: clamp(1.5rem, 4vw, 3rem)`. The current section is `--ink`, others `--muted`.
 - Rhythm (all `clamp()`, shrinking ≈×0.6 on phones):
   - masthead → lead: `clamp(4rem, 9vw, 7.5rem)`; masthead → page title: `clamp(3.5rem, 8vw, 6rem)`
   - between sections: `clamp(4.5rem, 10vw, 7rem)`
@@ -98,7 +98,7 @@ All live in `src/components/` or as classes in `src/styles/site.css`. Do not add
 
 | Thing | Where | Notes |
 |---|---|---|
-| `Base.astro` | layout | head meta (title template "X — Ajay Guru", description, canonical, OG/Twitter with `/og.png`, `rel=me`, RSS + sitemap links, icons, theme-color ×2, color-scheme), skip link, masthead, `<main id="main" tabindex="-1">`, footer, the two inline scripts |
+| `Base.astro` | layout | head meta (title template "X — Ajay Guru", description, canonical, OG/Twitter with `/og.png`, `rel=me`, RSS + sitemap links, icons, theme-color ×2, color-scheme), skip link, masthead, `<main id="main" tabindex="-1">`, footer — and no scripts |
 | `ThoughtList.astro` | component | rows of title + date ("tended Mon YYYY" if updated); `full` adds summary and bigger rows |
 | `.lead` | class | home statement + sub line |
 | `.page-title` | class | h1 + optional `.sub` |
@@ -108,8 +108,9 @@ All live in `src/components/` or as classes in `src/styles/site.css`. Do not add
 | `.prose` | class | markdown bodies and About; see §8 |
 | `footer.site` | element | GitHub · LinkedIn · X · email · RSS, then the colophon |
 | `.mono`, `.label`, `.todo` | utilities | the only utilities |
+| `.toolbox`, `.quiet`, `.prose h2 .mono` | class | About one-offs: the toolbox line (ink mono), secondary asides (muted 0.95em), and the dated-heading annotation |
 
-Footer colophon must stay true: "Set in IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. The only JavaScript is the theme switch." Update it if any of that changes.
+Footer colophon must stay true: "Set in IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript." Update it if any of that changes.
 
 ---
 
@@ -165,10 +166,10 @@ src/content/thoughts/_theme.d2     shared diagram palette
 
 - One `<h1>` per page (home: the name; elsewhere: the page/thought title).
 - Skip link → `#main`; visible focus ring (`2px solid currentColor`, 3 px offset) on everything; `[id] { scroll-margin-top: 2rem }`.
-- All text ≥ 13 px, all colour pairs ≥ 4.5:1; links are underlined in prose, never colour-only.
+- Running text ≥ 13 px; the two uppercase micro-labels (section labels, table heads) are 12 px with wide tracking. All colour pairs ≥ 4.5:1; links are underlined in prose, never colour-only.
 - Diagrams have alt text; footnotes have back links; the footnotes heading is visually hidden, not removed.
 - Fonts: ≈32 KB total, preloaded, `font-display: swap` with metric fallbacks. A page is a few KB of HTML + CSS; a diagram SVG is ~20–35 KB.
-- `grep -rho '<script[^>]*>' dist | sort -u` must show only the two theme-switch scripts.
+- `grep -rho '<script[^>]*>' dist | sort -u` must return nothing.
 
 ---
 
@@ -190,7 +191,7 @@ src/content/thoughts/_theme.d2     shared diagram palette
 - **Editorial layout, not a mono-led "terminal" layout.** Single column, generous rhythm, hairlines — the grid of a well-set page carrying monospace type.
 - **D2 binary, not D2.js.** D2.js hangs `astro build` (worker thread never exits) and was experimental; the binary is pinned in CI via `install.sh --version v0.8.1`.
 - **`<img>` diagrams + filter for dark, not inline SVG.** Keeps alt text, intrinsic size and caching; inline mode in astro-d2 0.13 loses alt/size for D2 ≥ 0.7.
-- **Theme button with `localStorage`, not OS-only.** OS-only was the first cut; a toggle was requested. Kept to two states and ~12 lines of inline JS.
+- **OS scheme only, no theme button.** A localStorage toggle shipped for a while (~12 lines of inline JS); removed to make the site genuinely zero-JS. The reader's OS setting is the switch; print forces light.
 - **No résumé, no phone, no talks/Medium links, no socials beyond GitHub · LinkedIn · X · email.** Decided at the redesign; the Thoughts section replaces earlier writing.
 - **No year in the copyright line.** Keeps the build deterministic across New Year.
 - **Static font cuts, not the variable family.** A quarter of the bytes; no axis the site uses.

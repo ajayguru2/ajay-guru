@@ -40,8 +40,8 @@ Weights: 400 for everything; 500 for headings, the masthead name and `strong`. D
 | Home statement | `clamp(1.25rem, 0.95rem + 1.1vw, 1.5rem)` (20–24 px) | 1.45 | weight 400 |
 | Page title (h1) | `clamp(1.5rem, 1.2rem + 1.2vw, 2rem)` (24–32 px) | 1.2 | weight 500 |
 | Work entry h2 | `clamp(1.125rem, 1rem + 0.6vw, 1.375rem)` (18–22 px) | 1.3 | weight 500 |
-| Prose h2 / h3 | 1.125rem / 1rem | 1.25 | weight 500; markdown bodies start at `##` |
-| List titles (home, thoughts) | 1.0625–1.125rem | 1.35–1.4 | weight 400 home, 500 index |
+| Prose h2 / h3 | 1.125em / 1em of body | 1.25 | weight 500; markdown bodies start at `##` |
+| List titles (home, thoughts) | 1.0625–1.125em of body | 1.35–1.4 | weight 400 home, 500 index |
 | Masthead name | 1.125rem | — | weight 500; h1 only on the home page |
 | Nav, bylines, metadata, captions, footer | 0.8125rem (13 px) | 1.5–1.6 | colour `--muted`; never smaller than 13 px |
 | Section label | 0.75rem, uppercase, `letter-spacing: 0.12em` | — | `--muted`, above a hairline rule |
@@ -50,6 +50,8 @@ Weights: 400 for everything; 500 for headings, the masthead name and `strong`. D
 | Diagram labels | 14 (shapes, via the fence glob); edge labels keep D2's 16 unless set | — | see §7 |
 
 No letter-spacing on headings; no negative tracking anywhere; `text-wrap: balance` on headings, `pretty` on paragraphs.
+
+Prose subheads and list titles are sized in `em` so they track the fluid body — a heading must never render smaller than the text it heads. (The body clamp reaches 17 px on desktop; fixed-rem subheads used to fall below it.)
 
 ---
 
@@ -68,7 +70,7 @@ Six tokens, defined once with `light-dark()`; `color-scheme` picks the side.
 
 Contrast on paper: ink 16.0 / 14.1, muted 5.2 / 6.7, accent 8.3 / 7.3 (light / dark) — all AA for body text. Re-measure if you change a token.
 
-Rules: no other colours in the stylesheet; no gradients, shadows, tints, borders thicker than 1 px, or rounded corners beyond 2 px. Shiki themes are `github-light` / `github-dark` with their backgrounds overridden to `--paper-2`.
+Rules: no other colours in the stylesheet; no gradients, shadows, tints, borders thicker than 1 px, or rounded corners beyond 2 px. Shiki themes are `github-light` / `github-dark` with their backgrounds overridden to `--paper-2`, and the tokens that fall under the 4.5:1 floor on `--paper-2` remapped warm by a small transformer in `astro.config.mjs` (comments take `--muted`; keyword red and orange darken). Re-measure there if you change a theme or a paper token.
 
 **Scheme switching.** Default follows `prefers-color-scheme`. `<html data-theme="light|dark">` overrides it; the value is stored in `localStorage.theme`, applied by a 3-line inline script in `<head>` before first paint, toggled by the masthead button whose label names the theme you would switch *to*. There is no "auto" state in the UI; clearing site data restores it. Print forces light with pure black/white tokens.
 

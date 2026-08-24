@@ -5,6 +5,29 @@ import sitemap from "@astrojs/sitemap";
 
 const font = (file) => `./src/assets/fonts/${file}`;
 
+// The github themes were tuned for #fff / #24292e, not the paper tokens. These four
+// tokens fall below the 4.5:1 floor (DESIGN.md §10) on --paper-2, so they are remapped
+// warm: comments take the site's --muted values, keyword red and orange darken.
+// Measured on #ede6d8 / #1f1b17: 4.75, 5.72, 4.98 / 6.16. Re-measure if edited.
+const shikiRemap = {
+  light: { "#6A737D": "#6b635a", "#D73A49": "#a02f38", "#E36209": "#9c4a00" },
+  dark: { "#6A737D": "#a39a8c" }
+};
+const warmShikiTokens = {
+  name: "warm-shiki-tokens",
+  span(node) {
+    const style = node.properties?.style;
+    if (typeof style !== "string") return;
+    node.properties.style = style.replace(
+      /--shiki-(light|dark):(#[0-9A-Fa-f]{6})/g,
+      (all, scheme, hex) => {
+        const to = shikiRemap[scheme][hex.toUpperCase()];
+        return to ? `--shiki-${scheme}:${to}` : all;
+      }
+    );
+  }
+};
+
 export default defineConfig({
   site: "https://ajay.guru",
   integrations: [
@@ -25,7 +48,8 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: { light: "github-light", dark: "github-dark" },
-      defaultColor: false
+      defaultColor: false,
+      transformers: [warmShikiTokens]
     }
   },
   fonts: [

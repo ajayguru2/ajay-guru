@@ -13,6 +13,8 @@
 }
 @media screen and (prefers-color-scheme: dark) {
   :root { color-scheme: dark; }
+  /* antialiased counters light-on-dark bloom; on light paper it only thins the all-400 ink */
+  html { -webkit-font-smoothing: antialiased; }
 }
 
 /* ---------- base ---------- */
@@ -24,7 +26,6 @@ html {
   font-size: 100%;
   line-height: 1.6;
   -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
@@ -43,6 +44,7 @@ a { color: inherit; text-decoration: none; }
 a:hover { color: var(--accent); }
 em { font-style: italic; }
 strong { font-weight: 500; }
+::selection { background: var(--rule); } /* the one micro-state every reader triggers; OS blue breaks the paper */
 
 :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 [id] { scroll-margin-top: 2rem; }
@@ -96,7 +98,6 @@ strong { font-weight: 500; }
 .masthead nav a {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  letter-spacing: 0.02em;
   color: var(--muted);
   min-height: 44px;
   display: inline-flex;
@@ -146,6 +147,9 @@ main:focus { outline: none; }
   border-bottom: 1px solid var(--rule);
 }
 .thought-list a:last-child { border-bottom: 0; } /* rules sit between rows; the page must not close with one */
+/* hover flips the title only; metadata keeps its recessed voice (the work list already behaves this way) */
+.thought-list a:hover .date,
+.thought-list a:hover .summary { color: var(--muted); }
 .thought-list .title { font-size: 1.0625em; line-height: 1.4; }
 .thought-list .date { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); white-space: nowrap; }
 .thought-list.full { margin-top: 3rem; border-top: 1px solid var(--rule); }
@@ -159,13 +163,14 @@ main:focus { outline: none; }
 /* work page */
 .work-entries { display: flex; flex-direction: column; gap: clamp(3.5rem, 8vw, 5.5rem); margin-top: clamp(3rem, 7vw, 4.5rem); }
 .work-entry { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.work-entry:target { border-top-color: var(--ink); } /* the entry a /work#anchor landed on opens with an ink rule */
 .work-entry h2 { font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem); line-height: 1.3; }
 .work-entry .byline { margin-top: 0.625rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
 .work-entry .prose { margin-top: 1.75rem; }
 .work-entry .stack { margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
 
 /* article (thought) */
-.article-head .meta { margin-top: 1.125rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
+.article-head .meta { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
 .article-body { margin-top: 2.75rem; }
 
 footer.site {
@@ -185,7 +190,7 @@ footer.site nav a {
   display: inline-flex;
   align-items: center;
 }
-footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.6; color: var(--muted); max-width: 35rem; }
+footer.site .colophon { font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.6; color: var(--muted); max-width: 35rem; }
 
 /* ---------- prose (markdown bodies + about) ---------- */
 
@@ -209,9 +214,13 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
   background: var(--paper-2);
   padding: 0.1em 0.35em;
   border-radius: 2px;
+  box-decoration-break: clone; /* a wrapped chip keeps its padding on both sides of the break */
+  -webkit-box-decoration-break: clone;
 }
 .prose pre code { background: none; padding: 0; font-size: inherit; }
-.prose sup a { text-decoration: none; color: var(--accent); font-size: 0.75em; }
+/* size the sup itself so the UA's own `smaller` doesn't compound underneath; floor at 13px */
+.prose sup { font-size: max(0.75em, 0.8125rem); line-height: 0; }
+.prose sup a { text-decoration: none; color: var(--accent); }
 
 /* code blocks (Shiki, dual theme via defaultColor: false) */
 .astro-code {
@@ -233,7 +242,7 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
   text-align: left;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em; /* same voice as .label — one tracking for uppercase micro-labels */
   text-transform: uppercase;
   font-weight: 500;
   color: var(--muted);
@@ -267,7 +276,7 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
 }
 
 /* footnotes (Sätteri emits <section class="footnotes"> with an .sr-only h2) */
-.footnotes { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; font-size: 0.85em; color: var(--muted); }
+.footnotes { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; font-size: max(0.85em, 0.8125rem); color: var(--muted); }
 .footnotes ol { padding-left: 1.4em; }
 .footnotes li:target { background: var(--paper-2); margin-left: -0.5em; padding: 0.25em 0.5em; border-radius: 2px; }
 .footnotes a[data-footnote-backref] { text-decoration: none; color: var(--accent); font-family: var(--font-mono); }
@@ -277,6 +286,7 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
 @media print {
   :root { color-scheme: light; --paper: #fff; --paper-2: #f2f2f2; --ink: #000; --muted: #444; --accent: #000; --rule: #bbb; }
   .masthead nav, footer.site, .skip-link { display: none; }
+  .footnotes a[data-footnote-backref], .section-head a { display: none; } /* dead affordances on paper */
   body { font-size: 11pt; }
   .prose a[href^="http"]::after { content: " (" attr(href) ")"; font-family: var(--font-mono); font-size: 0.8em; }
   pre, img[src^="/d2/"], table { break-inside: avoid; }

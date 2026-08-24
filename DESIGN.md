@@ -62,8 +62,8 @@ Six tokens, defined once with `light-dark()`; `color-scheme` picks the side.
 | Token | Light | Dark | Used for |
 |---|---|---|---|
 | `--paper` | `#f6f1e7` | `#15130f` | page background |
-| `--paper-2` | `#ede6d8` | `#1f1b17` | code, inline code, diagram shape fill, `:target` highlight |
-| `--ink` | `#1a1613` | `#e6e0d4` | text, rules in tables' head, diagram strokes |
+| `--paper-2` | `#ede6d8` | `#1f1b17` | code, inline code, diagram shape fill, footnote `:target` highlight |
+| `--ink` | `#1a1613` | `#e6e0d4` | text, rules in tables' head, diagram strokes, the targeted work entry's opening rule |
 | `--muted` | `#6b635a` | `#a39a8c` | metadata, nav, captions, footnotes, secondary prose |
 | `--accent` | `#7a2e2a` | `#d9907f` | prose underlines, hover, footnote marks, TODO markers — nothing else |
 | `--rule` | `#d6cdbd` | `#332d26` | hairlines |

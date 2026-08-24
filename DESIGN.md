@@ -47,7 +47,7 @@ Weights: 400 for everything; 500 for headings, the masthead name and `strong`. D
 | Section label | 0.75rem, uppercase, `letter-spacing: 0.12em` | — | `--muted`, above a hairline rule |
 | Code blocks | 0.875rem | 1.6 | on `--paper-2`, `tab-size: 2`, scrolls horizontally |
 | Inline code | 0.95em | — | on `--paper-2`, 2 px radius |
-| Diagram labels | 14 (shapes, via the fence glob); edge labels keep D2's 16 unless set | — | see §7 |
+| Diagram labels | 14 (shapes); edge labels 13 (both via the fence globs) | — | see §7 |
 
 No letter-spacing on headings; no negative tracking anywhere; `text-wrap: balance` on headings, `pretty` on paragraphs.
 
@@ -117,18 +117,19 @@ Footer colophon must stay true: "Set in IBM Plex Mono. Built with Astro; diagram
 
 Diagrams are the one place the site gets visual, so they follow the same rules as the type.
 
-- Write them as ```` ```d2 ```` fences in Markdown. astro-d2 renders them at build time with the D2 binary (v0.8.1, ELK layout, pad 24) to `public/d2/<path>-N.svg` and emits `<img alt width height loading=lazy>`. `public/d2/` is build output and git-ignored.
-- **Every fence starts with two lines** that pull in the site's palette and font and turn off D2's defaults:
+- Write them as ```` ```d2 ```` fences in Markdown. astro-d2 renders them at build time with the D2 binary (v0.8.1, ELK layout, pad 8 — just enough that strokes don't clip; a larger pad bakes invisible margin into every figure gap) to `public/d2/<path>-N.svg` and emits `<img alt width height loading=lazy>`. `public/d2/` is build output and git-ignored.
+- **Every fence starts with three lines** that pull in the site's palette and font and turn off D2's defaults (the edge-label glob must sit in the fence — it does not survive the spread import):
   ```d2
   ...@_theme.d2
   *.style: {bold: false; stroke-width: 1; font-size: 14}
+  (* -> *)[*].style.font-size: 13
   ```
   `src/content/thoughts/_theme.d2` maps D2's N/B/AA colour slots to the six tokens and sets a transparent background. It affects only top-level shapes; nest shapes only if you restyle them.
 - **Every fence has a title**: ```` ```d2 title="One sentence saying what the chart shows" ````. It becomes the `alt`. `grep -rn '^```d2$' src/content` must return nothing.
 - Wrap a diagram in `<figure> … <figcaption>…</figcaption></figure>` (blank lines around the fence) when a caption helps. Captions are 13 px mono, muted, centred.
-- Size: **≤ 680 px wide**; prefer `direction: down` for long flows; keep labels ≥ 13 px (shape labels are 14 via the glob; to shrink edge labels add `(* -> *)[*].style.font-size: 13`). A diagram must still read at 390 px (it scales to the column).
+- Size: **≤ 680 px wide**; prefer `direction: down` for long flows; keep labels ≥ 13 px (shape labels are 14, edge labels 13, via the fence globs — metadata must not read louder than box titles). A diagram must still read at 390 px (it scales to the column).
 - Look: 1 px ink strokes, `--paper-2` fills, no bold labels, edge labels italic muted, dashed for loops/optional edges (`style.stroke-dash: 4`). No colour beyond the tokens, no icons, no sketch mode, no shadows.
-- Dark mode: D2 renders light only (`theme.dark: false`); the page applies `filter: invert(1) hue-rotate(180deg)` to `img[src^="/d2/"]` when the scheme is dark. That lands within a few units of the dark tokens. If exact colour ever matters, the upgrade path is astro-d2's `inline: true` + a CSS remap of D2's `.fill-*/.stroke-*` classes — but note its inline path currently drops the alt text and size for D2 ≥ 0.7.
+- Dark mode: D2 renders light only (`theme.dark: false`); the page applies `filter: invert(1) hue-rotate(180deg) brightness(0.96)` to `img[src^="/d2/"]` when the scheme is dark. Strokes land within a few units of the dark ink (the brightness step stops them blooming brighter than the page text); near-black fills sit a touch cool. If exact colour ever matters, the upgrade path is astro-d2's `inline: true` + a CSS remap of D2's `.fill-*/.stroke-*` classes — but note its inline path currently drops the alt text and size for D2 ≥ 0.7.
 
 ---
 

@@ -33,7 +33,7 @@ export default defineConfig({
   integrations: [
     astroD2({
       layout: "elk",
-      pad: 24,
+      pad: 8, // just enough that 1px strokes don't clip; larger pads bake invisible margin into every figure gap
       // Colors come from src/content/thoughts/_theme.d2 (theme-overrides); these ids are the base.
       theme: { default: "1", dark: false }, // dark handled by CSS (see site.css, img[src^="/d2/"])
       // Build-time only: D2 subsets and embeds these into each SVG.

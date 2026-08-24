@@ -16,6 +16,7 @@ The loop I run for every sub-feature — a feature is usually three to five of t
 ```d2 title="Six steps in a loop: context, plan, review the plan, code, review and test, commit — and back to context for the next sub-feature."
 ...@_theme.d2
 *.style: {bold: false; stroke-width: 1; font-size: 14}
+(* -> *)[*].style.font-size: 13
 direction: down
 
 context: "1   Context\nunderstand the module"

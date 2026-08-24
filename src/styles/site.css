@@ -243,8 +243,9 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
 .prose td { padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 
 /* D2 diagrams: astro-d2 emits <img src="/d2/..."> with intrinsic width/height (light palette only).
-   ponytail: dark = invert + hue-rotate of the light SVG (lands within a few units of the dark tokens);
-   switch to inline SVG + class remap if exact colours ever matter. */
+   ponytail: dark = invert + hue-rotate + brightness(.96) of the light SVG (strokes land within ~7 units
+   of the dark ink; the brightness step stops them blooming brighter than the page text; near-black fills
+   sit a touch cool). Switch to inline SVG + class remap if exact colours ever matter. */
 .prose img[src^="/d2/"] {
   display: block;
   height: auto;
@@ -252,7 +253,7 @@ footer.site .colophon { font-family: var(--font-mono); font-size: 0.75rem; line-
   max-width: min(100%, 100vw - 2.5rem);
 }
 @media screen and (prefers-color-scheme: dark) {
-  .prose img[src^="/d2/"] { filter: invert(1) hue-rotate(180deg); }
+  .prose img[src^="/d2/"] { filter: invert(1) hue-rotate(180deg) brightness(0.96); }
 }
 .prose figure { margin: 2rem 0; display: flex; flex-direction: column; align-items: center; gap: 0.875rem; }
 .prose figure img[src^="/d2/"] { margin: 0; }

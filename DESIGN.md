@@ -105,10 +105,10 @@ All live in `src/components/` or as classes in `src/styles/site.css`. Do not add
 | `.section` + `.section-head` | class | hairline, uppercase label left, "All … →" link right |
 | `.work-list` | class | home: h2 link + byline + blurb |
 | `.work-entry` | class | `/work`: h2, byline, `.prose` body, stack line |
-| `.prose` | class | markdown bodies and About; see §8 |
+| `.prose` | class | markdown bodies, About, and one-line prose (home invitation, 404); see §8 |
 | `footer.site` | element | GitHub · LinkedIn · X · email · RSS, then the colophon |
 | `.mono`, `.label`, `.todo` | utilities | the only utilities |
-| `.toolbox`, `.quiet`, `.prose h2 .mono` | class | About one-offs: the toolbox line (ink mono), secondary asides (muted 0.95em), and the dated-heading annotation |
+| `.prose h2 .mono` | class | About's dated-heading annotation |
 
 Footer colophon must stay true: "Set in IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript." Update it if any of that changes.
 

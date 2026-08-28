@@ -5,7 +5,7 @@ export async function GET(context) {
   const items = (await thoughts()).filter(({ id }) => !id.startsWith("_"));
   return rss({
     title: "Ajay Guru — Thoughts",
-    description: "Short notes I keep tending. Newest change first.",
+    description: "Notes I keep returning to, most recently tended first.",
     site: context.site,
     items: items.map(({ id, data }) => ({
       title: data.title,

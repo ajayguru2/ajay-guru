@@ -171,8 +171,6 @@ main:focus { outline: none; }
 
 /* about */
 .prose h2 .mono { margin-left: 0.5rem; font-weight: 400; } /* dated-heading annotation ("Now · August 2026") */
-.toolbox { font-family: var(--font-mono); font-size: 0.9375rem; color: var(--ink); line-height: 1.7; }
-.quiet { color: var(--muted); font-size: 0.95em; } /* secondary prose, one step back */
 
 /* article (thought) */
 .article-head .meta { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }

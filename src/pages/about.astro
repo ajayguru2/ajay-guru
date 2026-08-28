@@ -2,27 +2,23 @@
 import Base from "../components/Base.astro";
 ---
 
-<Base title="About" section="about" description="Who Ajay Guru is, what he is doing now, and how he works.">
+<Base title="About" section="about" description="Who Ajay Guru is and how he works.">
   <header class="page-title">
     <h1>About</h1>
   </header>
 
   <div class="prose article-body">
-    <p>I’m Ajay. I live in <span class="todo">[TODO: city]</span>, India, and I have written software for a living since 2020 and for the fun of it since well before that. <span class="todo">[TODO: one line about you away from a keyboard — the thing a colleague would mention first.]</span></p>
+    <p>I’m Ajay. I live in Bangalore, India, and come from Sagar, a city in Madhya Pradesh. I’m biased, but it’s beautiful. I have written software for a living since 2020 and for the fun of it since well before that. I’ve always been fascinated by how systems, organisations and people fit together. Software lets me follow those flows, make something new from them and work through the hard parts with other people. Away from the keyboard, I explore cultures through food, play chess badly and keep finding new parts of physics I wish I understood.</p>
 
     <h2>Now <span class="mono">August 2026</span></h2>
-    <p>A builder at Regie.ai, on the systems that move data between customers’ CRMs and their outreach. Most of my day is design and review: drawing the system, writing the plan, and reading what my AI pair writes against it.</p>
+    <p>I’m at Regie.ai, on the systems that move data between customers’ CRMs and their outreach. Most of my day is design and review. The first draft of the code is usually my AI pair’s; the plan it follows is mine.</p>
 
     <h2>How I work</h2>
-    <p><em>Design first.</em> I draw the system before I write it — boundaries, data flow, what can fail — and put the drawing in front of someone before code exists. Most of the drawings on this site started that way.</p>
-    <p><em>Test first.</em> The test describes the behaviour; then the smallest code that passes; then clean up. Fourteen months at Incubyte made this a reflex rather than a preference.</p>
+    <p><em>Design first.</em> I draw the system before I write it: where the boundaries sit, and what can fail. I put that drawing in front of someone before code exists. The diagram on this site started that way.</p>
+    <p><em>Test first.</em> I write the test before the code it describes. Fourteen months at <a href="/work/#incubyte">Incubyte</a> made that a reflex rather than a preference.</p>
     <p><em>With an AI pair.</em> Context, then an explicit plan, then review of the plan, then code, then review again, then commit. I spend my attention on the plan; the diff is where the plan shows. I wrote the loop up in <a href="/thoughts/review-the-plan-not-the-diff/">Review the plan, not the diff</a>.</p>
 
     <h2>On the side</h2>
-    <p><a href="https://github.com/ajayguru2/tmux-logger">tmux-logger</a>, a small tool in Rust; <a href="https://github.com/ajayguru2/slow.com">slow.com</a>, a Raycast extension that is obviously not as good as fast.com; <a href="https://github.com/ajayguru2/reflect">reflect</a>, a habit tracker with an AI coach; <a href="https://github.com/ajayguru2/claude-notebook">claude-notebook</a>. Earlier: a deep-learning nanodegree, a talk on concurrency in Go, too many tic-tac-toes.</p>
-
-    <h2>Toolbox</h2>
-    <p class="toolbox">Java · Go · TypeScript · Vue · Python · Rust · Postgres · AWS <span class="todo">[TODO: confirm, reorder by how much you’d defend each]</span></p>
-    <p class="quiet">B.Tech in Computer Science, IIIT Vadodara, 2016 – 2020.</p>
+    <p>Lately I’ve been experimenting with Omarchy and running local models such as Muse Glimmer on my own machine. I’m also reading about Ryan Dahl’s <a href="https://github.com/denoland/celld">celld</a> and learning Rust, slowly.</p>
   </div>
 </Base>

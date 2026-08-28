@@ -30,3 +30,6 @@ yarn-error.log*
 
 # seeded design canvas (2 MB; re-generated from design/*.dc.html)
 /design/ajay-guru-redesign.html
+
+# local writing guide
+/VOICE.md

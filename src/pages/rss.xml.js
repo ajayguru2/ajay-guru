@@ -2,7 +2,7 @@ import rss from "@astrojs/rss";
 import { thoughts } from "../lib";
 
 export async function GET(context) {
-  const items = await thoughts();
+  const items = (await thoughts()).filter(({ id }) => !id.startsWith("_"));
   return rss({
     title: "Ajay Guru — Thoughts",
     description: "Short notes I keep tending. Newest change first.",

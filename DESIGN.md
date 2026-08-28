@@ -156,6 +156,7 @@ src/content/thoughts/_theme.d2     shared diagram palette
 ```
 
 - Thoughts list by `updated ?? date`, newest first, everywhere (home shows 5, index shows all). `summary` feeds `<meta name=description>` and RSS only.
+- A `_`-prefixed thought is built by `astro dev` and by the preview site (`DRAFTS=1`), never by the live build, RSS or the sitemap. It carries a `draft` marker in `.todo` accent on the list row and in the article meta line — the one piece of chrome that exists only outside production. The authoring loop is `npm run new` → `dev` / `share` → `publish`; see the README.
 - Work order is the filename prefix. `/work#<name>` is the anchor the home page links to.
 - About is a page, not content: `src/pages/about.astro`. Keep it: who (2–3 sentences) · Now (dated) · How I work · On the side · Toolbox + one education clause.
 - Do not add tags, categories, reading time, authors, hero images, related posts or comments. Add a field only when a page needs to render it.

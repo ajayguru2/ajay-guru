@@ -2,9 +2,13 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-// Thoughts: short living notes. A file starting with `_` is unpublished (no draft flag needed).
+// A file starting with `_` is unpublished (no draft flag needed). It is still built by `astro dev`
+// and by the preview site (DRAFTS=1) so a draft can be read and shared before it goes live.
+const drafts = import.meta.env.DEV || process.env.DRAFTS === "1";
+
+// Thoughts: short living notes.
 const thoughts = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/thoughts" }),
+  loader: glob({ pattern: drafts ? "**/*.md" : "**/[^_]*.md", base: "./src/content/thoughts" }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),

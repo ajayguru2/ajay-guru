@@ -29,7 +29,7 @@ const warmShikiTokens = {
 };
 
 export default defineConfig({
-  site: "https://ajay.guru",
+  site: process.env.PREVIEW_SITE || "https://ajay.guru", // the preview build points canonical/OG at itself
   integrations: [
     astroD2({
       layout: "elk",
@@ -43,7 +43,7 @@ export default defineConfig({
         italic: "src/assets/fonts/IBMPlexMono-Italic.ttf"
       }
     }),
-    sitemap()
+    sitemap({ filter: (page) => !page.includes("/_") }) // a draft is never in the sitemap
   ],
   markdown: {
     shikiConfig: {

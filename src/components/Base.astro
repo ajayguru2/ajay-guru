@@ -9,7 +9,7 @@ interface Props {
 }
 
 const site = "Ajay Guru";
-const { title, description = "Ajay Guru builds the parts of software that must agree with something outside themselves. Work, thoughts and diagrams.", section } = Astro.props;
+const { title, description = "Ajay Guru follows messy problems across code, systems and people. Work, thoughts and diagrams.", section } = Astro.props;
 const pageTitle = title ? `${title} — ${site}` : site;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const isHome = Astro.url.pathname === "/";
@@ -72,9 +72,7 @@ const nav = [
           <a href="https://www.linkedin.com/in/ajayguru21/" rel="me">LinkedIn</a>
           <a href="https://x.com/AjayGuru0" rel="me">X</a>
           <a href="mailto:hi@ajay.guru">hi@ajay.guru</a>
-          <a href="/rss.xml">RSS</a>
         </nav>
-        <p class="colophon">Set in IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript. © Ajay Guru.</p>
       </footer>
     </div>
   </body>

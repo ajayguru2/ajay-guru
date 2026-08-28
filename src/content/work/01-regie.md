@@ -1,14 +1,11 @@
 ---
-title: Polling a CRM into outreach sequences
-byline: 'Regie.ai · Software Engineer <span class="todo">[TODO: title]</span> · 2024 – now <span class="todo">[TODO: start]</span>'
-stack: [TypeScript, Node, AWS EventBridge, Salesforce SOQL, Postgres]
-blurb: "A scheduled poller that reads Salesforce with the customer’s own SOQL, so new and changed contacts land in outreach sequences without anyone exporting a list. A query that cannot sync is refused at creation."
+title: Building CRM systems people can rely on
+byline: 'Regie.ai · Software Engineer · 2024 – now'
+blurb: "I lead the Integrations team, designing reliable connections between Salesforce or HubSpot and Regie and working with customers to understand the sales processes those connections need to preserve."
 ---
 
-Regie’s customers keep their truth in Salesforce. They wanted new and changed contacts to land in outreach sequences without anyone exporting a list. The catch: every customer defines “the right contacts” differently, and the only language they all speak is SOQL, Salesforce’s query language.
+At Regie.ai, I lead the Integrations team. We build the systems that connect Salesforce and HubSpot to Regie, bring customer data in and keep changes moving in both directions. I design the full lifecycle of those connections — from setup and initial import to continuous sync, outbound updates, recovery and the visibility people need to trust what happened.
 
-I built inbound polling. An EventBridge schedule wakes a thin consumer every two minutes; it runs the customer’s own SOQL with a date filter injected, validates what comes back against their CRM mapping, and enrols the new prospects. A query is validated when it is written — structurally, and by executing it with `LIMIT 1` — so a bad query fails at creation, not at 3 a.m. on its first sync.
+The hard part is that no two customer CRMs mean quite the same thing. Schemas, permissions and sales processes differ, provider APIs change, and long-running work can stop halfway. I design for that reality: keep workspaces isolated, make progress durable, recover safely and verify that data reached the system it was meant for.
 
-The hard part was extending the existing source types instead of inventing a new one, and keeping filter semantics backwards-compatible (defaulting to `LastModifiedDate`). Workspace scoping in a multi-tenant system had to stay airtight.
-
-The work shipped in five pull requests and has not caused a production incident. Most of it was written with an AI pair, following a loop I [wrote up](/thoughts/review-the-plan-not-the-diff/).
+The work is not only technical. I work closely with customers to understand the sales process behind the data. With Commvault, one of Regie’s largest customers, I partnered with their leadership from onboarding through renewal. We mapped how leads entered their funnel, how ownership and stages changed, where automation handed work to people and what their teams expected from both Salesforce and Regie. That understanding helped us shape the product around how they actually worked, support adoption and earn their renewal.

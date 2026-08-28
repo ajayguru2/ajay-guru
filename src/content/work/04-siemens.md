@@ -1,10 +1,9 @@
 ---
-title: Teaching a building to heat itself
+title: Researching intelligent control for buildings
 byline: 'Siemens · Research Intern · Jan – Aug 2020'
-stack: [Python, Reinforcement learning, Docker]
-blurb: "Reinforcement learning aimed at keeping rooms inside ASHRAE comfort bounds on less energy than hand-tuned schedules; later a challenge at the Siemens Global Hackathon."
+blurb: "I built reinforcement-learning controllers for building comfort and the infrastructure needed to run and validate the models."
 ---
 
-Heating and cooling is a large share of a building’s energy use. The brief: keep rooms inside ASHRAE comfort bounds (the ranges the comfort standard allows) while using less of it, and do it with reinforcement learning rather than hand-tuned schedules.
+At Siemens, I researched whether reinforcement learning could control heating and cooling while keeping rooms within ASHRAE comfort bounds and reducing energy use.
 
-I built the RL controller, containerised the models, enabled remote execution and validated the ones that already existed. <span class="todo">[TODO: what the controller achieved against the hand-tuned baseline.]</span> The problem was good enough that Siemens posed it as a challenge at its Global Hackathon 2020.
+The role combined research with engineering. I built the controller and the system around it: containerising models, enabling remote execution and validating the models that already existed. The work later became a challenge at the Siemens Global Hackathon 2020.

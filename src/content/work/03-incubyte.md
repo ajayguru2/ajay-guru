@@ -1,10 +1,11 @@
 ---
-title: Shipping lending software test-first
+title: Building lending software test-first
 byline: 'Incubyte · Software Craftsperson · Oct 2020 – Dec 2021'
-stack: [Java (Micronaut), Go (Gin)]
-blurb: "Lending software for Republic Finance, a US consumer lender, and the test-first habit that stuck."
+blurb: "I built full-stack lending software for Republic Finance in a team where tests, pairing and readable code were part of the work, not cleanup."
 ---
 
-A consultancy that takes craft literally. I worked full-stack for Republic Finance, a US consumer lender, on services in Micronaut and Go. Test-first was the default, and nothing merged that a colleague couldn’t read cold. <span class="todo">[TODO: one concrete piece of the lending stack you shipped — the thing you’d point to.]</span>
+Incubyte was my first full-time engineering role. As a Software Craftsperson, I worked full-stack for Republic Finance, a US consumer lender, across services in Java with Micronaut and Go with Gin.
 
-The lasting part wasn’t the stack. It was the habit: write the test that describes the behaviour, then the smallest code that passes, then clean up. I still work that way, with a human pair or an AI one.
+My responsibility was not only to ship changes but to leave the system safe for the next change. We made the behaviour explicit, wrote the test that described it, implemented the smallest code that passed and then cleaned it up. Pairing, review and code that a colleague could read cold were everyday expectations.
+
+That role made quality a daily team practice rather than a final gate. I still work the same way: make the behaviour clear before implementation, prefer the simplest design that holds and treat readability as a shared responsibility.

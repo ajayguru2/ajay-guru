@@ -23,7 +23,6 @@ const work = defineCollection({
   schema: z.object({
     title: z.string(), // the system, not the employer
     byline: z.string(), // "Org · Role · Period"
-    stack: z.string().array(),
     blurb: z.string() // one line for the home page
   })
 });

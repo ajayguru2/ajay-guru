@@ -16,6 +16,39 @@ Before checking a chess engine, choose the move. Before reaching for the equatio
 
 When I am wrong, the difference is useful. It shows the exact place where my picture of the world and the world parted company. When I am right, I still have to explain why, then change one condition and see whether the explanation survives.
 
+<figure>
+
+```d2 title="Two paths from something to learn: reading the answer first fades within a day, while a guess that collides with the answer ends in a correction that sticks."
+...@_theme.d2
+*.style: {bold: false; stroke-width: 1; font-size: 14}
+(* -> *)[*].style.font-size: 13
+
+direction: down
+
+q: Something to learn
+read: Read the answer first
+ofcourse: '"Of course"'
+gone: "Little remains\na day later"
+guess: Write a guess first
+collide: "The answer collides\nwith the guess"
+wrong: "Wrong: the exact place\nthe picture broke"
+right: "Right: explain why,\nchange one condition"
+fix: "A correction\nthat sticks"
+
+q -> read
+read -> ofcourse: borrowed certainty
+ofcourse -> gone: {style.stroke-dash: 4}
+q -> guess
+guess -> collide
+collide -> wrong
+collide -> right
+wrong -> fix
+right -> fix
+```
+
+<figcaption>Both paths reach the same answer. Only one records what it changed.</figcaption>
+</figure>
+
 This is more uncomfortable than reading first. A prediction creates the possibility of being visibly wrong, even when I am the only person who will see it. But that small commitment is what turns the answer from information into a correction.
 
 Afterwards I can study, redraw the idea in my own words, try it, break it and return to it later. Those steps matter, but the guess gives them an address. Without it, I mostly learn that a good explanation sounds good.

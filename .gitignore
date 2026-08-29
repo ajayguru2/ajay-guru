@@ -28,6 +28,9 @@ yarn-error.log*
 # editors
 .idea
 
+# Claude Code worktree checkouts
+/.claude/worktrees
+
 # seeded design canvas (2 MB; re-generated from design/*.dc.html)
 /design/ajay-guru-redesign.html
 

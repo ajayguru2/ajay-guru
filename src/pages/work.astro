@@ -1,0 +1,26 @@
+---
+import { render } from "astro:content";
+import Base from "../components/Base.astro";
+import { work, slug } from "../lib";
+
+const entries = await Promise.all(
+  (await work()).map(async (entry) => ({ entry, Content: (await render(entry)).Content }))
+);
+---
+
+<Base title="Work" section="work" description="Ajay Guru’s work across CRM infrastructure, cooking robotics, lending software and reinforcement learning.">
+  <header class="page-title">
+    <h1>Work</h1>
+    <p class="sub">Things I’ve built and am proud of.</p>
+  </header>
+
+  <div class="work-entries">
+    {entries.map(({ entry, Content }) => (
+      <article class="work-entry" id={slug(entry.id)}>
+        <h2>{entry.data.title}</h2>
+        <p class="byline" set:html={entry.data.byline} />
+        <div class="prose"><Content /></div>
+      </article>
+    ))}
+  </div>
+</Base>

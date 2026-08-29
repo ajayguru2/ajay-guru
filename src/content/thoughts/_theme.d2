@@ -1,0 +1,32 @@
+# Shared D2 theme for every diagram on the site. Start each fence with:
+#   ...@_theme.d2
+#   *.style: {bold: false; stroke-width: 1; font-size: 14}
+#   (* -> *)[*].style.font-size: 13
+# Colors mirror the light src/styles/site.css tokens. Dark mode is NOT rendered here —
+# astro.config.mjs sets theme.dark: false and the page inverts the light SVG with a CSS
+# filter (see img[src^="/d2/"] in site.css).
+vars: {
+  d2-config: {
+    theme-overrides: {
+      N1: "#1a1613"
+      N2: "#6b635a"
+      N3: "#a39a8c"
+      N4: "#d6cdbd"
+      N5: "#ede6d8"
+      N6: "#f6f1e7"
+      N7: "#f6f1e7"
+      B1: "#1a1613"
+      B2: "#6b635a"
+      B3: "#d6cdbd"
+      B4: "#ede6d8"
+      B5: "#f6f1e7"
+      B6: "#ede6d8"
+      AA2: "#7a2e2a"
+      AA4: "#d6cdbd"
+      AA5: "#ede6d8"
+      AB4: "#d6cdbd"
+      AB5: "#ede6d8"
+    }
+  }
+}
+style.fill: transparent

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .page { --paper:#f6f1e7; --paper-2:#ede6d8; --ink:#1a1613; --muted:#6b635a; --accent:#7a2e2a; --rule:#d6cdbd;
+            --serif:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+            --code-kw:#7a2e2a; --code-fn:#2b4c7e; --code-str:#3b6d3a; --code-cm:#8a8178;
+            font-family: var(--serif); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .page.dark { --paper:#15130f; --paper-2:#1f1b17; --ink:#e6e0d4; --muted:#a39a8c; --accent:#d9907f; --rule:#332d26;
+            --code-kw:#d9907f; --code-fn:#9db7e0; --code-str:#a3c69a; --code-cm:#7d756a; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .prose p { margin: 0 0 1.15em 0; font-size: 19px; line-height: 1.55; text-wrap: pretty; }
+    .prose a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+    .prose code { font-family: var(--mono); font-size: 0.86em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px; }
+    .prose strong { font-weight: 600; }
+    .prose sup a { text-decoration: none; color: var(--accent); font-family: var(--mono); font-size: 0.7em; }
+    .nav a { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+    .nav a.current { color: var(--ink); }
+    pre { margin: 0; font-family: var(--mono); font-size: 14.5px; line-height: 1.6; color: var(--ink); white-space: pre; tab-size: 2; }
+    .kw { color: var(--code-kw); } .fn { color: var(--code-fn); } .st { color: var(--code-str); } .cm { color: var(--code-cm); font-style: italic; }
+    table { border-collapse: collapse; width: 100%; font-size: 17px; line-height: 1.45; }
+    th { text-align: left; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--muted); padding: 0 16px 10px 0; border-bottom: 1px solid var(--ink); }
+    td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    td code { font-family: var(--mono); font-size: 0.86em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px; }
+    .d2 text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
+    .d2 .sub { font-size: 10.5px; fill: var(--muted); }
+    .d2 .n { font-size: 11px; fill: var(--muted); }
+    .d2 rect { fill: var(--paper-2); stroke: var(--ink); stroke-width: 1; }
+    .d2 path { fill: none; stroke: var(--ink); stroke-width: 1; }
+    .d2 .ret { stroke-dasharray: 4 3; }
+    .d2 .edge-label { font-size: 11px; fill: var(--muted); }
+  </style>
+</helmet>
+<div class="page {{theme}}" style="width: 1280px; min-height: 2040px; box-sizing: border-box; padding: 48px 0 64px 0; display: flex; flex-direction: column; align-items: center;">
+
+  <header style="width: 680px; display: flex; justify-content: space-between; align-items: baseline;">
+    <a href="#" style="font-size: 22px; font-weight: 500; font-variation-settings: 'opsz' 36;">Ajay Guru</a>
+    <nav class="nav" style="display: flex; gap: 28px;">
+      <a href="#">Work</a>
+      <a href="#" class="current">Thoughts</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <article style="width: 680px; margin-top: 96px; display: flex; flex-direction: column; align-items: stretch;">
+    <header>
+      <h1 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 500; letter-spacing: -0.015em; font-variation-settings: 'opsz' 36; text-wrap: balance;">Review the plan, not the diff</h1>
+      <p style="margin: 18px 0 0 0; font-family: var(--mono); font-size: 13px; color: var(--muted);">Written March 2026 · tended August 2026</p>
+    </header>
+
+    <div class="prose" style="margin-top: 44px;">
+      <p>Most of the value of working with an AI pair is decided before a line of code exists. The diff is where mistakes show up; the plan is where they are made. So that is where I spend my attention.</p>
+      <p>The loop I run for every sub-feature — a feature is usually three to five of these:</p>
+    </div>
+
+    <figure style="margin: 20px 0 0 0; display: flex; flex-direction: column; align-items: center; gap: 14px; align-self: center; width: 680px;">
+      <svg class="d2" viewBox="0 0 680 320" width="680" height="320" role="img" aria-label="Six steps in a loop: context, plan, review the plan, code, review and test, commit; the last points back to the first for the next sub-feature.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 1 1 L 9 5 L 1 9" style="fill:none; stroke: var(--ink); stroke-width: 1.2;"></path>
+          </marker>
+        </defs>
+        <!-- row 1 -->
+        <rect x="30" y="40" width="180" height="64" rx="2"></rect>
+        <text x="46" y="67" class="n">1</text>
+        <text x="62" y="67">Context</text>
+        <text x="62" y="86" class="sub">understand the module</text>
+
+        <rect x="250" y="40" width="180" height="64" rx="2"></rect>
+        <text x="266" y="67" class="n">2</text>
+        <text x="282" y="67">Plan</text>
+        <text x="282" y="86" class="sub">file, shape, reason</text>
+
+        <rect x="470" y="40" width="180" height="64" rx="2"></rect>
+        <text x="486" y="67" class="n">3</text>
+        <text x="502" y="67">Review the plan</text>
+        <text x="502" y="86" class="sub">push back, iterate</text>
+
+        <!-- row 2 -->
+        <rect x="30" y="190" width="180" height="64" rx="2"></rect>
+        <text x="46" y="217" class="n">4</text>
+        <text x="62" y="217">Code</text>
+        <text x="62" y="236" class="sub">review live, correct</text>
+
+        <rect x="250" y="190" width="180" height="64" rx="2"></rect>
+        <text x="266" y="217" class="n">5</text>
+        <text x="282" y="217">Review &amp; test</text>
+        <text x="282" y="236" class="sub">agents, then a human</text>
+
+        <rect x="470" y="190" width="180" height="64" rx="2"></rect>
+        <text x="486" y="217" class="n">6</text>
+        <text x="502" y="217">Commit</text>
+        <text x="502" y="236" class="sub">open the PR</text>
+
+        <!-- edges -->
+        <path d="M 210 72 L 250 72" marker-end="url(#ah)"></path>
+        <path d="M 430 72 L 470 72" marker-end="url(#ah)"></path>
+        <path d="M 560 104 L 560 147 L 120 147 L 120 190" marker-end="url(#ah)"></path>
+        <path d="M 210 222 L 250 222" marker-end="url(#ah)"></path>
+        <path d="M 430 222 L 470 222" marker-end="url(#ah)"></path>
+        <path class="ret" d="M 560 254 L 560 292 L 12 292 L 12 72 L 30 72" marker-end="url(#ah)"></path>
+        <text x="290" y="309" class="edge-label" text-anchor="middle">next sub-feature</text>
+      </svg>
+      <figcaption style="font-family: var(--mono); font-size: 13px; line-height: 1.5; color: var(--muted); text-align: center; max-width: 520px;">One cycle per sub-feature. A feature is three to five cycles.</figcaption>
+    </figure>
+
+    <div class="prose" style="margin-top: 40px;">
+      <p><strong>Context first.</strong> Point the model at the module and have it map boundaries, data flow and existing patterns before anything else. On the inbound-polling work this is how we learned an existing <code>SfSource</code> already had the fields we needed — which saved a whole new source type and the refactor that would have followed.</p>
+      <p><strong>Make the plan explicit.</strong> Not “update the sync service”. Which file, which method, which shape, and why. “Add <code>querySoqlByWorkspace&lt;T&gt;(workspaceId, soql)</code> that wraps the existing <code>querySoql</code> with workspace context” produces exactly that. A vague plan produces vague code.</p>
+    </div>
+
+    <div style="margin-top: 8px; background: var(--paper-2); padding: 20px 24px; border-radius: 2px; overflow-x: auto;">
+<pre><span style="display:block;"><span class="cm">// regie-list/utils.ts — one source of truth for "is this a SOQL source"</span></span><span style="display:block;"><span class="kw">export function</span> <span class="fn">isSoqlSource</span>(config: ListSourceConfig): <span class="kw">boolean</span> {</span><span style="display:block;">&nbsp;&nbsp;<span class="kw">return</span> !!config.soql;</span><span style="display:block;">}</span><span style="display:block;">&nbsp;</span><span style="display:block;"><span class="cm">// crm.service.ts — the plan named the method, its shape, and why</span></span><span style="display:block;"><span class="kw">async</span> <span class="fn">querySoqlByWorkspace</span>&lt;T&gt;(workspaceId: <span class="kw">string</span>, soql: <span class="kw">string</span>): Promise&lt;T[]&gt;</span></pre>
+    </div>
+
+    <div class="prose" style="margin-top: 32px;">
+      <p><strong>Push back on the plan.</strong> Read it the way you would read a design doc from a colleague. “If this validation passes, will the list actually sync?” — asked once, it turned up a missing check for required fields. Iterate until it holds, then paste the finished plan back as the instruction, so what was reviewed is what gets built.<sup><a href="#fn1" id="ref1">1</a></sup></p>
+      <p><strong>Stay in the loop while it codes.</strong> Style drift is the common failure: string literals where the codebase uses enums, <code>as unknown as X</code>, comments on obvious code. Catch it live. And when you correct the same thing twice, stop — it belongs in <code>CLAUDE.md</code>, not in your memory.</p>
+    </div>
+
+    <table style="margin-top: 12px;">
+      <thead><tr><th>Mistake caught</th><th>Rule added</th></tr></thead>
+      <tbody>
+        <tr><td>String literals for enum-like values</td><td>Always use enum values, never string literals</td></tr>
+        <tr><td><code>as unknown as X</code> double casts</td><td>Question every cast; refactor instead</td></tr>
+        <tr><td>Missing <code>workspaceId</code> filter</td><td>Multi-tenant: always scope by workspace</td></tr>
+        <tr><td><code>while</code> loop for async polling</td><td>Non-blocking <code>setInterval</code>, not a loop</td></tr>
+      </tbody>
+    </table>
+
+    <div class="prose" style="margin-top: 36px;">
+      <p><strong>Review twice, then commit.</strong> Agents on the pre-commit hook, a human on the pull request. Thirty-plus files, five PRs, no incidents — not because the model is careful, but because the plan was.</p>
+    </div>
+
+    <section style="margin-top: 56px; border-top: 1px solid var(--rule); padding-top: 20px;">
+      <ol style="margin: 0; padding-left: 1.4em; font-size: 16px; line-height: 1.55; color: var(--muted);">
+        <li id="fn1" style="background: var(--paper-2); margin-left: -0.5em; padding: 4px 0.5em; border-radius: 2px;">“Implement it” is not an instruction. The reviewed plan is. <a href="#ref1" style="font-family: var(--mono); color: var(--accent);">↩</a> <span style="font-family: var(--mono); font-size: 11px; color: var(--muted); margin-left: 12px;">← :target state</span></li>
+      </ol>
+    </section>
+  </article>
+
+  <footer style="width: 680px; margin-top: 128px; display: flex; flex-direction: column; gap: 18px; border-top: 1px solid var(--rule); padding-top: 20px;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">GitHub</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">LinkedIn</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">X</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">hi@ajay.guru</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">RSS</a>
+    </nav>
+    <p style="margin: 0; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 560px;">Set in Newsreader and IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript. © 2026 Ajay Guru.</p>
+  </footer>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1280,"height":2040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.dark ? 'dark' : '' };
+  }
+}
+</script>
+</body>
+</html>

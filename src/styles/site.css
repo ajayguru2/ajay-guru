@@ -1,0 +1,295 @@
+/* ajay.guru — one stylesheet. Tokens first, then base, layout, prose, print.
+   Scheme follows the OS. Each token is defined once with light-dark(); color-scheme picks the side. */
+
+:root {
+  color-scheme: light;
+  --paper: light-dark(#f6f1e7, #15130f);
+  --paper-2: light-dark(#ede6d8, #1f1b17);
+  --ink: light-dark(#1a1613, #e6e0d4);
+  --muted: light-dark(#6b635a, #a39a8c);
+  --accent: light-dark(#7a2e2a, #d9907f);
+  --rule: light-dark(#d6cdbd, #332d26);
+  --measure: 42.5rem; /* 680px */
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+  /* antialiased counters light-on-dark bloom; on light paper it only thins the all-400 ink */
+  html { -webkit-font-smoothing: antialiased; }
+}
+
+/* ---------- base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-mono);
+  font-size: 100%;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: clamp(0.9375rem, 0.875rem + 0.3vw, 1.0625rem);
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 500; text-wrap: balance; line-height: 1.25; }
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; }
+img, svg { max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+em { font-style: italic; }
+strong { font-weight: 500; }
+::selection { background: var(--rule); } /* the one micro-state every reader triggers; OS blue breaks the paper */
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+[id] { scroll-margin-top: 2rem; }
+
+.sr-only,
+.skip-link:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.5rem 0.75rem;
+  background: var(--paper-2);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.mono { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400; /* section labels are h2s for the outline; the label voice stays quiet */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.todo { color: var(--accent); }
+
+/* ---------- layout ---------- */
+
+.wrap {
+  width: min(var(--measure), 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+.masthead .name { font-size: 1.125rem; font-weight: 500; }
+.masthead nav { display: flex; gap: clamp(1.125rem, 2.5vw, 1.75rem); }
+.masthead nav a {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.masthead nav a[aria-current="page"] { color: var(--ink); }
+
+main { display: block; }
+main:focus { outline: none; }
+
+.lead { margin-top: clamp(4rem, 9vw, 7.5rem); }
+.lead h1, .lead .statement {
+  font-size: clamp(1.25rem, 0.95rem + 1.1vw, 1.5rem);
+  line-height: 1.45;
+  font-weight: 400;
+}
+.lead .sub { margin-top: 1.5rem; color: var(--muted); }
+
+.page-title { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.page-title h1 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); line-height: 1.2; }
+.page-title .sub { margin-top: 1.25rem; color: var(--muted); }
+
+.section { margin-top: clamp(4.5rem, 10vw, 7rem); }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.875rem;
+}
+.section-head a { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
+
+/* work list on home */
+.work-list { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
+.work-list article { display: flex; flex-direction: column; gap: 0.5rem; }
+.work-list h3 { font-size: 1.125em; line-height: 1.35; }
+.work-list p { margin-top: 0.25rem; font-size: 0.95em; }
+
+/* thought list (home + index) */
+.thought-list { display: flex; flex-direction: column; margin-top: 1.625rem; } /* + 0.875rem row padding = 2.5rem, the .work-list offset */
+.thought-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.thought-list a:last-child { border-bottom: 0; } /* rules sit between rows; the page must not close with one */
+/* hover flips the title only; metadata keeps its recessed voice (the work list already behaves this way) */
+.thought-list a:hover .date,
+.thought-list a:hover .summary { color: var(--muted); }
+.thought-list .title { font-size: 1.0625em; line-height: 1.4; }
+.thought-list .date { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); white-space: nowrap; }
+.thought-list.full { margin-top: 3rem; border-top: 1px solid var(--rule); }
+.thought-list.full a { flex-direction: column; gap: 0.375rem; padding: 1.375rem 0; }
+.thought-list.full .title { font-size: 1.125em; font-weight: 500; line-height: 1.35; }
+.thought-list.full .summary { color: var(--muted); font-size: 0.95em; }
+@media (max-width: 32rem) {
+  .thought-list a { flex-direction: column; gap: 0.25rem; }
+}
+
+/* work page */
+.work-entries { display: flex; flex-direction: column; gap: clamp(3.5rem, 8vw, 5.5rem); margin-top: clamp(3rem, 7vw, 4.5rem); }
+.work-entry { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.work-entry:target { border-top-color: var(--ink); } /* the entry a /work#anchor landed on opens with an ink rule */
+.work-entry h2 { font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem); line-height: 1.3; }
+.work-entry .byline { margin-top: 0.625rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+.work-entry .prose { margin-top: 1.75rem; }
+
+/* about */
+.prose h2 .mono { margin-left: 0.5rem; font-weight: 400; } /* dated-heading annotation ("Now · August 2026") */
+
+/* article (thought) */
+.article-head .meta { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
+.article-body { margin-top: 2.75rem; }
+
+footer.site {
+  margin-top: clamp(5.5rem, 12vw, 8rem);
+  padding: 1.25rem 0 3rem;
+  border-top: 1px solid var(--rule);
+}
+footer.site nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+footer.site nav a {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+/* ---------- prose (markdown bodies + about) ---------- */
+
+.prose > * + * { margin-top: 1.15em; }
+.prose h2 { font-size: 1.125em; margin-top: 2.25em; }
+.prose h3 { font-size: 1.0625em; margin-top: 1.75em; }
+.prose h2 + *, .prose h3 + * { margin-top: 0.75em; }
+.prose a {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: 0.35em; }
+.prose blockquote { margin: 0; padding-left: 1.25rem; border-left: 1px solid var(--rule); color: var(--muted); }
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  background: var(--paper-2);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  box-decoration-break: clone; /* a wrapped chip keeps its padding on both sides of the break */
+  -webkit-box-decoration-break: clone;
+}
+.prose pre code { background: none; padding: 0; font-size: inherit; }
+/* size the sup itself so the UA's own `smaller` doesn't compound underneath; floor at 13px */
+.prose sup { font-size: max(0.75em, 0.8125rem); line-height: 0; }
+.prose sup a { text-decoration: none; color: var(--accent); }
+
+/* code blocks (Shiki, dual theme via defaultColor: false) */
+.astro-code {
+  margin: 1.5rem 0;
+  padding: 1.125rem 1.375rem;
+  border-radius: 2px;
+  background: var(--paper-2) !important;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  tab-size: 2;
+}
+.astro-code, .astro-code span { color: light-dark(var(--shiki-light), var(--shiki-dark)); }
+
+/* tables */
+/* the wrapper scrolls (astro.config.mjs wrapTables) so the table keeps its semantics */
+.prose .table-scroll { overflow-x: auto; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.95em; line-height: 1.45; }
+.prose th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em; /* same voice as .label — one tracking for uppercase micro-labels */
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 0 1rem 0.625rem 0;
+  border-bottom: 1px solid var(--ink);
+}
+.prose td { padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+
+/* D2 diagrams: astro-d2 emits <img src="/d2/..."> with intrinsic width/height (light palette only).
+   ponytail: dark = invert + hue-rotate + brightness(.96) of the light SVG (strokes land within ~7 units
+   of the dark ink; the brightness step stops them blooming brighter than the page text; near-black fills
+   sit a touch cool). Switch to inline SVG + class remap if exact colours ever matter. */
+.prose img[src^="/d2/"] {
+  display: block;
+  height: auto;
+  margin: 2rem auto;
+  max-width: min(100%, 100vw - 2.5rem);
+}
+@media screen and (prefers-color-scheme: dark) {
+  .prose img[src^="/d2/"] { filter: invert(1) hue-rotate(180deg) brightness(0.96); }
+}
+.prose figure { margin: 2rem 0; display: flex; flex-direction: column; align-items: center; gap: 0.875rem; }
+.prose figure img[src^="/d2/"] { margin: 0; }
+.prose figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+  max-width: 32rem;
+}
+
+/* footnotes (Sätteri emits <section class="footnotes"> with an .sr-only h2) */
+.footnotes { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 1.25rem; font-size: max(0.85em, 0.8125rem); color: var(--muted); }
+.footnotes ol { padding-left: 1.4em; }
+.footnotes li:target { background: var(--paper-2); margin-left: -0.5em; padding: 0.25em 0.5em; border-radius: 2px; }
+.footnotes a[data-footnote-backref] { text-decoration: none; color: var(--accent); font-family: var(--font-mono); }
+
+/* ---------- print ---------- */
+
+@media print {
+  :root { color-scheme: light; --paper: #fff; --paper-2: #f2f2f2; --ink: #000; --muted: #444; --accent: #000; --rule: #bbb; }
+  .masthead nav, footer.site, .skip-link { display: none; }
+  .footnotes a[data-footnote-backref], .section-head a { display: none; } /* dead affordances on paper */
+  body { font-size: 11pt; }
+  .prose a[href^="http"]::after { content: " (" attr(href) ")"; font-family: var(--font-mono); font-size: 0.8em; }
+  pre, img[src^="/d2/"], table { break-inside: avoid; }
+  .astro-code { white-space: pre-wrap; }
+  @page { margin: 2cm; }
+}

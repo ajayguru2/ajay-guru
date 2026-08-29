@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    rect { fill: #f6f1e7; }
+    text { fill: #1a1613; font: 500 24px ui-monospace, Menlo, Consolas, monospace; }
+    @media (prefers-color-scheme: dark) { rect { fill: #15130f; } text { fill: #e6e0d4; } }
+  </style>
+  <rect width="32" height="32" rx="5"/>
+  <text x="16" y="25" text-anchor="middle">A</text>
+</svg>

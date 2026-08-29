@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .page { --paper:#f6f1e7; --paper-2:#ede6d8; --ink:#1a1613; --muted:#6b635a; --accent:#7a2e2a; --rule:#d6cdbd;
+            --serif:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+            font-family: var(--serif); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .page.dark { --paper:#15130f; --paper-2:#1f1b17; --ink:#e6e0d4; --muted:#a39a8c; --accent:#d9907f; --rule:#332d26; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .prose p { margin: 0 0 1.1em 0; font-size: 19px; line-height: 1.55; text-wrap: pretty; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+    .prose code { font-family: var(--mono); font-size: 0.86em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px; }
+    .prose h2 { margin: 0 0 14px 0; font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24; }
+    .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .nav a { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+    .nav a.current { color: var(--ink); }
+    .todo { color: var(--accent); }
+  </style>
+</helmet>
+<div class="page {{theme}}" style="width: 1280px; min-height: 1720px; box-sizing: border-box; padding: 48px 0 64px 0; display: flex; flex-direction: column; align-items: center;">
+
+  <header style="width: 680px; display: flex; justify-content: space-between; align-items: baseline;">
+    <a href="#" style="font-size: 22px; font-weight: 500; font-variation-settings: 'opsz' 36;">Ajay Guru</a>
+    <nav class="nav" style="display: flex; gap: 28px;">
+      <a href="#">Work</a>
+      <a href="#">Thoughts</a>
+      <a href="#" class="current">About</a>
+    </nav>
+  </header>
+
+  <section style="width: 680px; margin-top: 96px;">
+    <h1 style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 500; letter-spacing: -0.015em; font-variation-settings: 'opsz' 36;">About</h1>
+  </section>
+
+  <div class="prose" style="width: 680px; margin-top: 40px; display: flex; flex-direction: column; gap: 56px;">
+
+    <section>
+      <p>I’m Ajay. I live in <span class="todo">[TODO: city]</span>, India, and I have written software for a living since 2020 and for the fun of it since well before that. <span class="todo">[TODO: one line about you away from a keyboard — the thing a colleague would mention first.]</span></p>
+    </section>
+
+    <section>
+      <h2>Now <span style="font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 8px;">August 2026</span></h2>
+      <p>A builder at Regie.ai, on the systems that move data between customers’ CRMs and their outreach. Most of my day is design and review: drawing the system, writing the plan, and reading what my AI pair writes against it.</p>
+    </section>
+
+    <section>
+      <h2>How I work</h2>
+      <p><em>Design first.</em> I draw the system before I write it — boundaries, data flow, what can fail — and put the drawing in front of someone before code exists. Most of the drawings on this site started that way.</p>
+      <p><em>Test first.</em> The test describes the behaviour; then the smallest code that passes; then clean up. A year at Incubyte made this a reflex rather than a preference.</p>
+      <p><em>With an AI pair.</em> Context, then an explicit plan, then review of the plan, then code, then review again, then commit. I spend my attention on the plan; the diff is where the plan shows. I wrote the loop up in <a href="#">Review the plan, not the diff</a>.</p>
+    </section>
+
+    <section>
+      <h2>On the side</h2>
+      <p><a href="#">tmux-logger</a>, a small tool in Rust; <a href="#">slow.com</a>, a Raycast extension that is obviously not as good as fast.com; <a href="#">reflect</a>, a habit tracker with an AI coach; <a href="#">claude-notebook</a>. Earlier: a deep-learning nanodegree, a Go concurrency talk, too many tic-tac-toes.</p>
+    </section>
+
+    <section>
+      <h2>Toolbox</h2>
+      <p style="font-family: var(--mono); font-size: 15px; line-height: 1.7; color: var(--ink);">Java · Go · TypeScript · Vue · Python · Rust · Postgres · AWS <span class="todo">[TODO: confirm, reorder by how much you'd defend each]</span></p>
+      <p style="color: var(--muted); font-size: 17px; margin-top: 12px;">B.Tech in Computer Science, IIIT Vadodara, 2016 – 2020.</p>
+    </section>
+
+  </div>
+
+  <footer style="width: 680px; margin-top: 128px; display: flex; flex-direction: column; gap: 18px; border-top: 1px solid var(--rule); padding-top: 20px;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">GitHub</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">LinkedIn</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">X</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">hi@ajay.guru</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">RSS</a>
+    </nav>
+    <p style="margin: 0; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 560px;">Set in Newsreader and IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript. © 2026 Ajay Guru.</p>
+  </footer>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1280,"height":1720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.dark ? 'dark' : '' };
+  }
+}
+</script>
+</body>
+</html>

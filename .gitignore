@@ -6,8 +6,6 @@
 .pnp.js
 
 # testing
-/coverage
-/build
 /dist
 /.astro
 
@@ -23,3 +21,18 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# build output of astro-d2 (regenerated every build)
+/public/d2
+
+# editors
+.idea
+
+# Claude Code worktree checkouts
+/.claude/worktrees
+
+# seeded design canvas (2 MB; re-generated from design/*.dc.html)
+/design/ajay-guru-redesign.html
+
+# local writing guide
+/VOICE.md

@@ -1,18 +1,23 @@
 {
-  "homepage": "https://ajay.guru",
-  "name": "developerfolio",
-  "version": "0.1.0",
+  "name": "ajay.guru",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
+    "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "new": "node scripts/new.mjs",
+    "share": "node scripts/share.mjs",
+    "publish": "node scripts/publish.mjs"
   },
   "devDependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.4",
-    "sass": "^1.97.3"
+    "astro-d2": "^0.13.1"
   }
 }

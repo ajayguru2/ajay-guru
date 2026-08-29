@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .page { --paper:#f6f1e7; --paper-2:#ede6d8; --ink:#1a1613; --muted:#6b635a; --accent:#7a2e2a; --rule:#d6cdbd;
+            --serif:'Newsreader',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+            font-family: var(--serif); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    .page.dark { --paper:#15130f; --paper-2:#1f1b17; --ink:#e6e0d4; --muted:#a39a8c; --accent:#d9907f; --rule:#332d26; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .prose a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+    .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .nav a { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+    .nav a.current { color: var(--ink); }
+    .todo { color: var(--accent); }
+  </style>
+</helmet>
+<div class="page {{theme}}" style="width: 1280px; min-height: 1560px; box-sizing: border-box; padding: 48px 0 64px 0; display: flex; flex-direction: column; align-items: center;">
+
+  <header style="width: 680px; display: flex; justify-content: space-between; align-items: baseline;">
+    <h1 style="margin: 0; font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: -0.005em; font-variation-settings: 'opsz' 36;">Ajay Guru</h1>
+    <nav class="nav" style="display: flex; gap: 28px;">
+      <a href="#">Work</a>
+      <a href="#">Thoughts</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <section style="width: 680px; margin-top: 120px;">
+    <p style="margin: 0; font-size: 31px; line-height: 1.32; font-weight: 400; letter-spacing: -0.01em; font-variation-settings: 'opsz' 36; text-wrap: pretty;">I build the parts of software that must agree with something outside themselves: a CRM that changes under you, a cooking machine that has to dispense what the recipe says, an engineer who has to follow the plan.</p>
+    <p style="margin: 28px 0 0 0; font-size: 19px; line-height: 1.55; color: var(--muted); text-wrap: pretty;">Currently a builder at Regie.ai, in India. Before that: Nymble, Incubyte, Siemens.</p>
+  </section>
+
+  <section style="width: 680px; margin-top: 112px; display: flex; flex-direction: column; gap: 0;">
+    <div style="border-top: 1px solid var(--rule); padding-top: 14px; display: flex; justify-content: space-between; align-items: baseline;">
+      <span class="label">Work</span>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">All work →</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
+      <article style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="#" style="font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24;">Polling a CRM into sales sequences</a>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted);">Regie.ai · 2024 – now <span style="color: var(--accent);">[TODO: start date]</span></span>
+        <p style="margin: 4px 0 0 0; font-size: 18px; line-height: 1.5; color: var(--ink); text-wrap: pretty;">A scheduled poller that reads Salesforce with the customer’s own SOQL, refuses a query at creation if it cannot sync, and enrolls what it finds. Thirty-plus files, six modules, zero incidents.</p>
+      </article>
+
+      <article style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="#" style="font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24;">Turning recipes into machine instructions</a>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted);">Nymble · Dec 2021 – 2023 <span style="color: var(--accent);">[TODO: end date]</span></span>
+        <p style="margin: 4px 0 0 0; font-size: 18px; line-height: 1.5; text-wrap: pretty;">Compiling composite recipes into macro, micro and liquid dispense steps a cooking robot can execute — and a test bench to prove it did.</p>
+      </article>
+
+      <article style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="#" style="font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24;">Shipping lending software test-first</a>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted);">Incubyte · Oct 2020 – Dec 2021</span>
+        <p style="margin: 4px 0 0 0; font-size: 18px; line-height: 1.5; text-wrap: pretty;">Fourteen months as a craftsperson on Republic Finance’s stack, Micronaut and Go, every line test-first.</p>
+      </article>
+
+      <article style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="#" style="font-size: 24px; line-height: 1.25; font-weight: 500; font-variation-settings: 'opsz' 24;">Teaching a house to heat itself</a>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted);">Siemens · Jan – Aug 2020</span>
+        <p style="margin: 4px 0 0 0; font-size: 18px; line-height: 1.5; text-wrap: pretty;">Reinforcement learning that kept rooms ASHRAE-comfortable on less energy; later a challenge at the Siemens Global Hackathon.</p>
+      </article>
+    </div>
+  </section>
+
+  <section style="width: 680px; margin-top: 104px;">
+    <div style="border-top: 1px solid var(--rule); padding-top: 14px; display: flex; justify-content: space-between; align-items: baseline;">
+      <span class="label">Thoughts</span>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">All thoughts →</a>
+    </div>
+    <div style="display: flex; flex-direction: column; margin-top: 28px;">
+      <a href="#" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--rule);">
+        <span style="font-size: 21px; line-height: 1.3;">Review the plan, not the diff</span>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap;">tended Aug 2026</span>
+      </a>
+      <a href="#" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--rule);">
+        <span style="font-size: 21px; line-height: 1.3;">Corrections you make twice belong in a file</span>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap;">Mar 2026</span>
+      </a>
+      <a href="#" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--rule);">
+        <span style="font-size: 21px; line-height: 1.3;">A vague plan produces vague code <span class="todo" style="font-family: var(--mono); font-size: 11px;">[candidate]</span></span>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap;">Mar 2026</span>
+      </a>
+      <a href="#" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--rule);">
+        <span style="font-size: 21px; line-height: 1.3;">Context before code <span class="todo" style="font-family: var(--mono); font-size: 11px;">[candidate]</span></span>
+        <span style="font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap;">Mar 2026</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="width: 680px; margin-top: 128px; display: flex; flex-direction: column; gap: 18px; border-top: 1px solid var(--rule); padding-top: 20px;">
+    <nav style="display: flex; gap: 24px;">
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">GitHub</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">LinkedIn</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">X</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">hi@ajay.guru</a>
+      <a href="#" style="font-family: var(--mono); font-size: 13px; color: var(--muted);">RSS</a>
+    </nav>
+    <p style="margin: 0; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 560px;">Set in Newsreader and IBM Plex Mono. Built with Astro; diagrams drawn in D2 at build time. No JavaScript. © 2026 Ajay Guru.</p>
+  </footer>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"dark":{"editor":"boolean","default":false,"section":"Theme"},"$preview":{"width":1280,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.dark ? 'dark' : '' };
+  }
+}
+</script>
+</body>
+</html>

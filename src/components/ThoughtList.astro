@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  items: CollectionEntry<"thoughts">[];
+  full?: boolean; // index page: larger rows with summaries
+}
+
+const { items, full = false } = Astro.props;
+const short = (d: Date) => d.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
+const isDraft = (id: string) => id.startsWith("_"); // only ever true in dev and on the preview site
+---
+
+<div class:list={["thought-list", { full }]}>
+  {items.map(({ id, data }) => (
+    <a href={`/thoughts/${id}/`}>
+      <span class="title">{data.title}</span>
+      {full && data.summary && <span class="summary">{data.summary}</span>}
+      <span class="date">
+        {isDraft(id) && <><span class="todo">draft</span>{" · "}</>}
+        {data.updated ? `tended ${short(data.updated)}` : short(data.date)}
+      </span>
+    </a>
+  ))}
+</div>

@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
+import { satteri } from "@astrojs/markdown-satteri";
 import astroD2 from "astro-d2";
 import sitemap from "@astrojs/sitemap";
 
@@ -28,6 +29,23 @@ const warmShikiTokens = {
   }
 };
 
+// Tables scroll inside their own wrapper; display:block on the table itself would also
+// scroll but drops table semantics in some screen readers (see .table-scroll in site.css).
+const wrapTables = {
+  name: "wrap-tables",
+  element: {
+    filter: ["table"],
+    visit(node, ctx) {
+      ctx.wrapNode(node, {
+        type: "element",
+        tagName: "div",
+        properties: { className: ["table-scroll"] },
+        children: []
+      });
+    }
+  }
+};
+
 export default defineConfig({
   site: process.env.PREVIEW_SITE || "https://ajay.guru", // the preview build points canonical/OG at itself
   integrations: [
@@ -46,6 +64,7 @@ export default defineConfig({
     sitemap({ filter: (page) => !page.includes("/_") }) // a draft is never in the sitemap
   ],
   markdown: {
+    processor: satteri({ hastPlugins: [wrapTables] }),
     shikiConfig: {
       themes: { light: "github-light", dark: "github-dark" },
       defaultColor: false,

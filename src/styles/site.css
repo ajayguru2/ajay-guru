@@ -73,6 +73,7 @@ strong { font-weight: 500; }
 .label {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 400; /* section labels are h2s for the outline; the label voice stays quiet */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
@@ -133,11 +134,11 @@ main:focus { outline: none; }
 /* work list on home */
 .work-list { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
 .work-list article { display: flex; flex-direction: column; gap: 0.5rem; }
-.work-list h2 { font-size: 1.125em; line-height: 1.35; }
+.work-list h3 { font-size: 1.125em; line-height: 1.35; }
 .work-list p { margin-top: 0.25rem; font-size: 0.95em; }
 
 /* thought list (home + index) */
-.thought-list { display: flex; flex-direction: column; margin-top: 1.75rem; }
+.thought-list { display: flex; flex-direction: column; margin-top: 1.625rem; } /* + 0.875rem row padding = 2.5rem, the .work-list offset */
 .thought-list a {
   display: flex;
   justify-content: space-between;
@@ -193,7 +194,7 @@ footer.site nav a {
 
 .prose > * + * { margin-top: 1.15em; }
 .prose h2 { font-size: 1.125em; margin-top: 2.25em; }
-.prose h3 { font-size: 1em; margin-top: 1.75em; }
+.prose h3 { font-size: 1.0625em; margin-top: 1.75em; }
 .prose h2 + *, .prose h3 + * { margin-top: 0.75em; }
 .prose a {
   text-decoration: underline;
@@ -234,7 +235,9 @@ footer.site nav a {
 .astro-code, .astro-code span { color: light-dark(var(--shiki-light), var(--shiki-dark)); }
 
 /* tables */
-.prose table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; font-size: 0.95em; line-height: 1.45; }
+/* the wrapper scrolls (astro.config.mjs wrapTables) so the table keeps its semantics */
+.prose .table-scroll { overflow-x: auto; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.95em; line-height: 1.45; }
 .prose th {
   text-align: left;
   font-family: var(--font-mono);

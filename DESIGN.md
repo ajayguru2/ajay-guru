@@ -118,7 +118,7 @@ Footer colophon must stay true: "Set in IBM Plex Mono. Built with Astro; diagram
 
 Diagrams are the one place the site gets visual, so they follow the same rules as the type.
 
-- Write them as ```` ```d2 ```` fences in Markdown. astro-d2 renders them at build time with the D2 binary (v0.8.1, ELK layout, pad 8 — just enough that strokes don't clip; a larger pad bakes invisible margin into every figure gap) to `public/d2/<path>-N.svg` and emits `<img alt width height loading=lazy>`. `public/d2/` is build output and git-ignored.
+- Write them as ```` ```d2 ```` fences in Markdown. astro-d2 renders them at build time with the D2 binary (v0.8.2, ELK layout, pad 8 — just enough that strokes don't clip; a larger pad bakes invisible margin into every figure gap) to `public/d2/<path>-N.svg` and emits `<img alt width height loading=lazy>`. `public/d2/` is build output and git-ignored.
 - **Every fence starts with three lines** that pull in the site's palette and font and turn off D2's defaults (the edge-label glob must sit in the fence — it does not survive the spread import):
   ```d2
   ...@_theme.d2
@@ -190,7 +190,7 @@ src/content/thoughts/_theme.d2     shared diagram palette
 
 - **Monospace everywhere.** Ajay's call after seeing a serif build; it reads as a notebook and makes code, diagrams and prose one voice. Sizes were retuned down for the wider glyphs.
 - **Editorial layout, not a mono-led "terminal" layout.** Single column, generous rhythm, hairlines — the grid of a well-set page carrying monospace type.
-- **D2 binary, not D2.js.** D2.js hangs `astro build` (worker thread never exits) and was experimental; the binary is pinned in CI via `install.sh --version v0.8.1`.
+- **D2 binary, not D2.js.** D2.js hangs `astro build` (worker thread never exits) and was experimental; the binary is pinned in CI via `install.sh --version v0.8.2`.
 - **`<img>` diagrams + filter for dark, not inline SVG.** Keeps alt text, intrinsic size and caching; inline mode in astro-d2 0.13 loses alt/size for D2 ≥ 0.7.
 - **OS scheme only, no theme button.** A localStorage toggle shipped for a while (~12 lines of inline JS); removed to make the site genuinely zero-JS. The reader's OS setting is the switch; print forces light.
 - **No résumé, no phone, no talks/Medium links, no socials beyond GitHub · LinkedIn · X · email.** Decided at the redesign; the Thoughts section replaces earlier writing.

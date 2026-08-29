@@ -33,7 +33,7 @@ jobs:
       - run: npm ci
       - name: Install D2 (diagrams are rendered at build time)
         run: |
-          curl -fsSL https://d2lang.com/install.sh | sh -s -- --version v0.8.1 --prefix "$HOME/.local"
+          curl -fsSL https://d2lang.com/install.sh | sh -s -- --version v0.8.2 --prefix "$HOME/.local"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Build, drafts included
         run: DRAFTS=1 npm run build

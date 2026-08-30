@@ -1,6 +1,6 @@
 ---
 title: Building CRM systems people can rely on
-byline: 'Regie.ai · Software Engineer · 2024 – now'
+byline: 'Regie.ai · Senior Software Engineer · 2024 – now'
 blurb: "I lead the Integrations team, designing reliable connections between Salesforce or HubSpot and Regie and working with customers to understand the sales processes those connections need to preserve."
 ---
 

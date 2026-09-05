@@ -1,11 +1,21 @@
 ---
-title: Designing the software behind a cooking robot
+title: Getting a robot to follow a recipe
 byline: 'Nymble · Software Engineer · Dec 2021 – 2023'
-blurb: "I designed the machine interaction layer that turned recipes into coordinated instructions the robot could execute and engineers could test and debug."
+blurb: "At Nymble, I turned recipes into instructions for a cooking robot. What to dispense, how much, when, and how to check whether it actually did that."
 ---
 
-At Nymble, I designed the software between a recipe and the cooking robot. I was responsible for the high- and low-level design of the machine interaction logic: turning composite recipes into macro, micro and liquid dispenses alongside cooking instructions with quantities, timing and ordering the hardware could honour.
+At Nymble, I worked on a cooking robot. My part was turning a recipe into instructions the machine could follow: what to dispense, how much and when, along with the cooking steps.
 
-The responsibility extended through execution and verification. Parallel dispenses could not collide, “no dispense” states had to be explicit, and failures needed to be reconstructable. I designed the instruction logs and a test bench that compared what the machine did with what it had been told.
+Some of those actions happened at the same time, so we had to coordinate the timing. Even skipping a dispense needed an instruction. You had to tell the robot to do nothing there.
 
-Working this close to hardware meant correctness could not stop at an internally consistent output. The design had to reflect physical constraints and make the machine’s behaviour understandable when software and reality did not agree.
+<figure>
+  <ol class="flow">
+    <li><strong>Recipe</strong><span>Ingredients and cooking steps</span></li>
+    <li><strong>Instructions</strong><span>Quantities, timing and order</span></li>
+    <li><strong>Execution</strong><span>What the robot actually did</span></li>
+    <li><strong>Comparison</strong><span>Did it follow the instructions?</span></li>
+  </ol>
+  <figcaption>Writing the instructions was one part. We also had to check what happened in the machine.</figcaption>
+</figure>
+
+I also designed the instruction logs and a test bench so we could compare what we’d asked the robot to do with what it actually did. When those didn’t match, the logs gave us somewhere to start looking.

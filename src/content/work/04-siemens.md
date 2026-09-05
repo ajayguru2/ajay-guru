@@ -1,9 +1,9 @@
 ---
-title: Researching intelligent control for buildings
+title: Can a building learn to use less energy?
 byline: 'Siemens · Research Intern · Jan – Aug 2020'
-blurb: "I built reinforcement-learning controllers for building comfort and the infrastructure needed to run and validate the models."
+blurb: "At Siemens, I worked on using reinforcement learning to control heating and cooling without making the rooms uncomfortable."
 ---
 
-At Siemens, I researched whether reinforcement learning could control heating and cooling while keeping rooms within ASHRAE comfort bounds and reducing energy use.
+During my internship at Siemens, I worked on a question: could we use reinforcement learning to reduce a building’s energy use while keeping the rooms comfortable? I worked on a controller for heating and cooling, with comfort limits defined by ASHRAE.
 
-The role combined research with engineering. I built the controller and the system around it: containerising models, enabling remote execution and validating the models that already existed. The work later became a challenge at the Siemens Global Hackathon 2020.
+There was also the work of getting models into containers, running them remotely and validating the existing ones. The project later became a challenge at the Siemens Global Hackathon 2020.

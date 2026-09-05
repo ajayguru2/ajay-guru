@@ -1,11 +1,9 @@
 ---
-title: Building lending software test-first
+title: Lending software for Republic Finance
 byline: 'Incubyte · Software Craftsperson · Oct 2020 – Dec 2021'
-blurb: "I built full-stack lending software for Republic Finance in a team where tests, pairing and readable code were part of the work, not cleanup."
+blurb: "My first full-time job. I worked on lending software for Republic Finance and spent a lot of time pairing with other developers."
 ---
 
-Incubyte was my first full-time engineering role. As a Software Craftsperson, I worked full-stack for Republic Finance, a US consumer lender, across services in Java with Micronaut and Go with Gin.
+My first full-time job was at Incubyte, working on lending software for Republic Finance, a US consumer lender. We used Java with Micronaut and Go with Gin.
 
-My responsibility was not only to ship changes but to leave the system safe for the next change. We made the behaviour explicit, wrote the test that described it, implemented the smallest code that passed and then cleaned it up. Pairing, review and code that a colleague could read cold were everyday expectations.
-
-That role made quality a daily team practice rather than a final gate. I still work the same way: make the behaviour clear before implementation, prefer the simplest design that holds and treat readability as a shared responsibility.
+We did a lot of pair programming and wrote tests before the implementation. Working through code with another person taught me a lot about making it readable. I still pay attention to that when I review code now.

@@ -1,56 +1,36 @@
 ---
-title: Study after you guess
+title: Let me guess first
 date: 2026-08-29
-summary: An explanation feels obvious after it has been explained. A guess made first reveals what you actually believed and gives surprise somewhere to land.
+updated: 2026-09-06
+summary: Everything makes sense while I’m reading it. Explaining it the next day is another story.
 ---
 
-I used to begin learning by looking for the best explanation. This feels sensible. It is also a good way to borrow someone else’s certainty.
+I’ll read an explanation and think, yeah, that makes sense. I can follow each step. Then I try to explain it the next day and realise I can’t. What happened to all that understanding?
 
-Once the answer is on the page, every step towards it starts to look inevitable. I recognise the argument, think “of course”, and mistake that feeling for understanding. Close the book a day later and very little remains.
+Something I’m trying: make a guess before looking at the answer. Before I read a chapter, watch a video or ask a model, write down what I think will happen and why. Even if I’m very wrong.
 
-So I am trying a small reversal: guess first.
+A sentence or a rough sketch is enough. I just need something I can come back to after reading the explanation, because otherwise I’ll have forgotten what I thought before. It’s very easy to read the answer and feel like that was what I meant all along.
 
-Before I read the chapter, watch the video or ask a model, I write down what I think will happen and why. The guess does not need to be polished, or even plausible. Its job is to leave evidence of my mind before the answer edits it.
+Take chess. Before checking the engine, pick a move and think about what the other person would play next. Then look. If the engine suggests something else, follow that line and see what you missed. Maybe that piece wasn’t as well defended as you thought. Now you have a mistake you can actually look at and understand.
 
-Before checking a chess engine, choose the move. Before reaching for the equation, sketch which way the object will move. Before learning why something failed, predict where the failure began. The guess gives the explanation something to collide with.
-
-When I am wrong, the difference is useful. It shows the exact place where my picture of the world and the world parted company. When I am right, I still have to explain why, then change one condition and see whether the explanation survives.
+Getting the move right doesn’t settle it either. Did I see why it worked, or did I just happen to pick it? Changing one part of the question is a useful check. Can I still explain my answer?
 
 <figure>
-
-```d2 title="Two paths from something to learn: reading the answer first fades within a day, while a guess that collides with the answer ends in a correction that sticks."
-...@_theme.d2
-*.style: {bold: false; stroke-width: 1; font-size: 14}
-(* -> *)[*].style.font-size: 13
-
-direction: down
-
-q: Something to learn
-read: Read the answer first
-ofcourse: '"Of course"'
-gone: "Little remains\na day later"
-guess: Write a guess first
-collide: "The answer collides\nwith the guess"
-wrong: "Wrong: the exact place\nthe picture broke"
-right: "Right: explain why,\nchange one condition"
-fix: "A correction\nthat sticks"
-
-q -> read
-read -> ofcourse: borrowed certainty
-ofcourse -> gone: {style.stroke-dash: 4}
-q -> guess
-guess -> collide
-collide -> wrong
-collide -> right
-wrong -> fix
-right -> fix
-```
-
-<figcaption>Both paths reach the same answer. Only one records what it changed.</figcaption>
+  <div class="flow-comparison">
+    <ol class="flow" aria-label="Reading first">
+      <li>Read the explanation</li>
+      <li>Recognise the answer</li>
+      <li>Move on</li>
+    </ol>
+    <ol class="flow" aria-label="Guessing first">
+      <li>Write a guess</li>
+      <li>Check the explanation</li>
+      <li>Work out what I missed</li>
+    </ol>
+  </div>
+  <figcaption>The guess gives me something to come back to.</figcaption>
 </figure>
 
-This is more uncomfortable than reading first. A prediction creates the possibility of being visibly wrong, even when I am the only person who will see it. But that small commitment is what turns the answer from information into a correction.
+The uncomfortable part is having my guess written down. I can’t quietly convince myself I knew it all along when what I actually thought is sitting right there.
 
-Afterwards I can study, redraw the idea in my own words, try it, break it and return to it later. Those steps matter, but the guess gives them an address. Without it, I mostly learn that a good explanation sounds good.
-
-I do not want to finish a chapter knowing that the author made sense. I want to know what I believed before it, where that belief broke and what replaced it. The answer is more useful after a guess.
+I’m still trying to make a habit of this. There’s studying to do afterwards, obviously, but I have a question to work through. And the next day I can come back and try explaining it again, without looking.

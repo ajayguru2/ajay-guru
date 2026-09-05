@@ -18,7 +18,7 @@ const isDraft = (id: string) => id.startsWith("_"); // only ever true in dev and
       {full && data.summary && <span class="summary">{data.summary}</span>}
       <span class="date">
         {isDraft(id) && <><span class="todo">draft</span>{" · "}</>}
-        {data.updated ? `tended ${short(data.updated)}` : short(data.date)}
+        {data.updated ? `updated ${short(data.updated)}` : short(data.date)}
       </span>
     </a>
   ))}

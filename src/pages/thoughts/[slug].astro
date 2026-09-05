@@ -19,11 +19,15 @@ const { title, date, updated, summary } = entry.data;
       <h1>{title}</h1>
       <p class="meta">
         {entry.id.startsWith("_") && <><span class="todo">draft</span>{" · "}</>}
-        Written {long(date)}{updated && ` · tended ${long(updated)}`}
+        Written {long(date)}{updated && ` · updated ${long(updated)}`}
       </p>
     </header>
     <div class="prose article-body">
       <Content />
     </div>
+    <footer class="reading-end prose">
+      <p><a href="/thoughts/">← Back to Thoughts</a></p>
+      <p>What do you think? <a href={`mailto:hi@ajay.guru?subject=${encodeURIComponent(title)}`}>Write to me</a>. I’d like to hear your take.</p>
+    </footer>
   </article>
 </Base>

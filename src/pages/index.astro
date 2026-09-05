@@ -9,22 +9,13 @@ const entries = (await work()).slice(0, 2);
 
 <Base>
   <section class="lead">
-    <p class="statement">Hi, I’m Ajay.</p>
-    <p class="sub">I write software and lead the Integrations team at Regie.ai. I’m finding the leading-people part extremely difficult and learning things about myself along the way haha.</p>
-    <p class="sub">I wanted a place of my own to share what I’m learning and the things I build. So here it is.</p>
-  </section>
-
-  <section class="section" aria-labelledby="thoughts-label">
-    <div class="section-head">
-      <h2 class="label" id="thoughts-label">What I’ve been writing</h2>
-      <a href="/thoughts/">All thoughts →</a>
-    </div>
-    <ThoughtList items={latest} full />
+    <p class="statement">I like figuring out how things work.</p>
+    <p class="sub">I’m a software engineer in Bangalore. These days I lead the Integrations team at Regie.ai. Before that, I worked on a cooking robot at Nymble.</p>
   </section>
 
   <section class="section" aria-labelledby="work-label">
     <div class="section-head">
-      <h2 class="label" id="work-label">Some of my work</h2>
+      <h2 class="label" id="work-label">Selected work</h2>
       <a href="/work/">All work →</a>
     </div>
     <div class="work-list">
@@ -38,8 +29,15 @@ const entries = (await work()).slice(0, 2);
     </div>
   </section>
 
+  <section class="section" aria-labelledby="thoughts-label">
+    <div class="section-head">
+      <h2 class="label" id="thoughts-label">Latest thought</h2>
+      <a href="/thoughts/">All thoughts →</a>
+    </div>
+    <ThoughtList items={latest} full />
+  </section>
+
   <div class="section prose">
-    <p>My first attempt at software was a reservation app in QBASIC. No storage, no persistence. A glorified hello world, basically. <a href="/about/">That story is here</a>, along with a bit about me and the movies I’ve been watching.</p>
     <p>What have you been working on? <a href="mailto:hi@ajay.guru">Write to me</a>.</p>
   </div>
 </Base>
